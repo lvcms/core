@@ -3,6 +3,8 @@
 namespace Laracore\Core;
 
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
+use Laracore\Core\Framework\Contracts\Frontend\VueRouter as VueRouterContract;
+use Laracore\Core\Framework\Frontend\VueRouter;
 
 class ServiceProvider extends LaravelServiceProvider
 {
@@ -31,6 +33,7 @@ class ServiceProvider extends LaravelServiceProvider
     public function register()
     {
         $this->initConfig();
+        $this->bind();
     }
 
     /**
@@ -49,5 +52,14 @@ class ServiceProvider extends LaravelServiceProvider
         config(['graphql.types' => array_merge(config('graphql.types'), config('coreGraphql.types')) ]);
         config(['graphql.schemas.default.query' => array_merge(config('graphql.schemas.default.query'), config('coreGraphql.schemas.default.query'))]);
         // config(['graphql.schemas.default.mutation.updateUserPassword' => App\GraphQL\Mutation\UpdateUserPasswordMutation::class]);
+    }
+    /**
+     * [bind 绑定实例]
+     */
+    public function bind()
+    {
+        $this->app->bind(VueRouterContract::class, function () {
+              return new VueRouter();
+          });
     }
 }

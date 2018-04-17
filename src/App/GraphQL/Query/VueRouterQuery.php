@@ -2,6 +2,7 @@
 
 namespace Laracore\Core\App\GraphQL\Query;
 
+use Laracore\Core\Framework\Contracts\Frontend\VueRouter;
 use Folklore\GraphQL\Support\Query;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
@@ -28,17 +29,7 @@ class VueRouterQuery extends Query
 
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
-        return [
-          [
-            'path' => '123',
-            'name' => '1234',
-            'component' => '<cve-layout/>',
-            'children' => [
-              'path' => 'array123',
-              'name' => 'array1234',
-              'component' => 'array<cve-layout/>'
-            ]
-          ]
-        ];
+      $vueRouter = app()->make(VueRouter::class);
+      return $vueRouter->get($args['model']);
     }
 }
