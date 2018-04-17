@@ -1,6 +1,6 @@
 <?php
 
-namespace Laracore\Admin;
+namespace Laracore\Core;
 
 use Illuminate\Support\ServiceProvider;
 
