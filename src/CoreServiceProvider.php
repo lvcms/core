@@ -17,6 +17,10 @@ class CoreServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__.'/Routes/web.php');
         //视图
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'core');
+        //发布视图
+        $this->publishes([
+            __DIR__.'/../resources/views' => resource_path('views/vendor/core'),
+        ]);
     }
 
     /**
@@ -26,6 +30,16 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->initConfig();
+    }
+
+    /**
+     * [initConfig 初始化常用配置]
+     * @return [type] [description]
+     */
+    public function initConfig()
+    {
+        //设置user模型位置
+        config(['auth.providers.users.model' => App\Models\User::class]);
     }
 }
