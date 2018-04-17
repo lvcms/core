@@ -39,7 +39,15 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function initConfig()
     {
-        //设置user模型位置
+        $this->mergeConfigFrom(
+                  __DIR__.'/Config/graphql.php',
+                  'coreGraphql'
+            );
+        //设置 user 模型位置
         config(['auth.providers.users.model' => App\Models\User::class]);
+        // GraphQL 配置
+        config(['graphql.types' => array_merge(config('graphql.types'), config('coreGraphql.types')) ]);
+        config(['graphql.schemas.default.query' => array_merge(config('graphql.schemas.default.query'), config('coreGraphql.schemas.default.query'))]);
+        // config(['graphql.schemas.default.mutation.updateUserPassword' => App\GraphQL\Mutation\UpdateUserPasswordMutation::class]);
     }
 }
