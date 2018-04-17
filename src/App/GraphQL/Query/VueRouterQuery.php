@@ -32,8 +32,13 @@ class VueRouterQuery extends Query
           [
             'path' => '123',
             'name' => '1234',
-            'component' => '<cve-layout/>'
+            'component' => '<cve-layout/>',
+            'children' => [
+              'path' => 'array123',
+              'name' => 'array1234',
+              'component' => 'array<cve-layout/>'
+            ]
           ]
-        ]
+        ];
     }
 }

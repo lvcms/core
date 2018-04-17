@@ -28,7 +28,12 @@ class VueRouterType extends BaseType
             'component' => [
                 'type' => Type::nonNull(Type::string()),
                 'description' => 'The component of the VueRouter'
+            ],
+            'children' => [
+                'type' => GraphQL::Type('CommonScalar'),
+                'description' => 'The children of the VueRouter'
             ]
+
         ];
     }
 
