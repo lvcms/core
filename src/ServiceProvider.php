@@ -2,9 +2,9 @@
 
 namespace Laracore\Core;
 
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 
-class CoreServiceProvider extends ServiceProvider
+class ServiceProvider extends LaravelServiceProvider
 {
     /**
      * Perform post-registration booting of services.
