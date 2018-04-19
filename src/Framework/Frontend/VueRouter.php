@@ -16,7 +16,6 @@ class VueRouter implements VueRouterContract
     public function get($model)
     {
         $this->model = $model;
-
         $configs = $this->config();
         return $this->handler($configs);
     }
@@ -25,7 +24,7 @@ class VueRouter implements VueRouterContract
      * @param  [type] $config [description]
      * @return [type]         [description]
      */
-    public function handler($configs)
+    protected function handler($configs)
     {
         $vueRouter = collect($configs)->map(function ($config) {
             if (!empty($config['originalChildren'])) {
@@ -40,7 +39,7 @@ class VueRouter implements VueRouterContract
      * @param  [type] $original [description]
      * @return [type]           [description]
      */
-    public function handlerModel($original)
+    protected function handlerModel($original)
     {
         foreach ($original['model'] as $model) {
             $config = $this->modelConfig($model);
@@ -57,7 +56,7 @@ class VueRouter implements VueRouterContract
      * @param  [type] $model [description]
      * @return [type]        [description]
      */
-    public function config()
+    protected function config()
     {
         return config($this->model.'.vueRouter');
     }
@@ -65,7 +64,7 @@ class VueRouter implements VueRouterContract
      * [modelConfig 模块配置]
      * @return [type] [description]
      */
-    public function modelConfig($model)
+    protected function modelConfig($model)
     {
         return config($this->model.'.model.'.$model);
     }
