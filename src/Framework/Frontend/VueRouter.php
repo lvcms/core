@@ -2,7 +2,7 @@
 
 namespace Laracore\Core\Framework\Frontend;
 
-use Laracore\Core\Framework\Contracts\Frontend\VueRouter as VueRouterContract;;
+use Laracore\Core\Framework\Contracts\Frontend\VueRouter as VueRouterContract;
 
 class VueRouter implements VueRouterContract
 {
@@ -12,8 +12,8 @@ class VueRouter implements VueRouterContract
      * @param  string  $model
      * @return mixed
      */
-    public function get($model){
-       return config($model.'.vueRouter');
-      // return $model;
+    public function get($model)
+    {
+        return config($model.'.vueRouter');
     }
 }
