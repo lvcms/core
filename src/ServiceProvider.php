@@ -5,6 +5,9 @@ namespace Laracore\Core;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 use Laracore\Core\Framework\Contracts\Frontend\VueRouter as VueRouterContract;
 use Laracore\Core\Framework\Frontend\VueRouter;
+use Laracore\Core\Framework\Contracts\Frontend\Sidebar as SidebarContract;
+use Laracore\Core\Framework\Frontend\Sidebar;
+
 
 class ServiceProvider extends LaravelServiceProvider
 {
@@ -60,6 +63,9 @@ class ServiceProvider extends LaravelServiceProvider
     {
         $this->app->bind(VueRouterContract::class, function () {
               return new VueRouter();
-          });
+        });
+        $this->app->bind(SidebarContract::class, function () {
+              return new Sidebar();
+        });
     }
 }

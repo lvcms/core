@@ -36,9 +36,4 @@ class VueRouterType extends BaseType
 
         ];
     }
-
-    protected function resolveEmailField($root, $args)
-    {
-        return strtolower($root->email);
-    }
 }

@@ -4,6 +4,8 @@ return [
         'default' => [
             'query' => [
                 'vueRouter' => Laracore\Core\App\GraphQL\Query\VueRouterQuery::class,
+                'sidebar' => Laracore\Core\App\GraphQL\Query\SidebarQuery::class,
+
             ],
             'mutation' => [
                 // 'updateUserPassword' =>  Laracore\Core\App\GraphQL\Mutation\UpdateUserPasswordMutation::class,

@@ -7,9 +7,9 @@ use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 use GraphQL;
 
-use Laracore\Core\App\Actions\VueRouterAction;
+use Laracore\Core\App\Actions\SidebarAction;
 
-class VueRouterQuery extends Query
+class SidebarQuery extends Query
 {
     protected $attributes = [
         'name' => 'VueRouterQuery',
@@ -18,7 +18,7 @@ class VueRouterQuery extends Query
 
     public function type()
     {
-        return Type::listOf(GraphQL::type('VueRouter'));
+        return Type::listOf(GraphQL::Type('CommonScalar'));
     }
 
     public function args()
@@ -30,6 +30,6 @@ class VueRouterQuery extends Query
 
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
-        return app()->call(VueRouterAction::class, [$args], 'run');
+        return app()->call(SidebarAction::class, [$args], 'run');
     }
 }
