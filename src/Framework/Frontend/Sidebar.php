@@ -23,33 +23,31 @@ class Sidebar implements SidebarContract
      * @param  [type] $config [description]
      * @return [type]         [description]
      */
-    protected function handler($configs)
+    public function handler($configs)
     {
-      dd($configs);
-        $vueRouter = collect($configs)->map(function ($config) {
-            if (!empty($config['originalChildren'])) {
-                $config['children'] = array_merge($config['children'], $this->handlerModel($config['originalChildren']));
-            }
-            return $config;
-        });
-        return $vueRouter;
+        foreach ($configs as $key => $config) {
+            $sidebar[] = [
+              'title' => $key,
+              'children' => $this->handlerModel($config)
+            ];
+        }
+        return $sidebar;
     }
     /**
      * [handlerModel 通过模块编译路由数据]
      * @param  [type] $original [description]
      * @return [type]           [description]
      */
-    protected function handlerModel($original)
+    protected function handlerModel($config)
     {
-        foreach ($original['model'] as $model) {
-            $config = $this->modelConfig($model);
-            $vueRouter[] = [
-                'path'  =>  $config['path'],
-                'name'  =>  $config['name'],
-                'component' =>  $original['component']
+        foreach ($config as $model) {
+            $modelConfig = $this->modelConfig($model);
+            $sidebar[] = [
+              'title' => $modelConfig['title'],
+              'path' => $modelConfig['path'],
             ];
         }
-        return $vueRouter;
+        return $sidebar;
     }
     /**
      * [config 获取配置]

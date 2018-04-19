@@ -23,7 +23,7 @@ class VueRouter implements VueRouterContract
      * @param  [type] $config [description]
      * @return [type]         [description]
      */
-    protected function handler($configs)
+    public function handler($configs)
     {
         $vueRouter = collect($configs)->map(function ($config) {
             if (!empty($config['originalChildren'])) {
