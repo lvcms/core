@@ -16,8 +16,7 @@ class VueRouter implements VueRouterContract
     public function get($model)
     {
         $this->model = $model;
-        $configs = $this->config();
-        return $this->handler($configs);
+        return $this->handler($this->config());
     }
     /**
      * [handler 处理配置信息编译成前端路由]
