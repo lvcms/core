@@ -11,11 +11,11 @@ class VueRouterAction
      * [protected 缓存时间]
      * @var [type]
      */
-    protected $cacheMinutes = 120;
+    protected $minutes = 120;
 
     public function run($args)
     {
-        return Cache::remember('VueRouter:'.$args['model'], $cacheMinutes, function () use ($args) {
+        return Cache::remember('VueRouter:'.$args['model'], $this->minutes, function () use ($args) {
             return app()->call(GetVueRouterTask::class, [$args], 'run');
         });
     }
