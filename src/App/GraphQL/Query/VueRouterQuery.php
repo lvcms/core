@@ -2,11 +2,12 @@
 
 namespace Laracore\Core\App\GraphQL\Query;
 
-use Laracore\Core\Framework\Contracts\Frontend\VueRouter;
 use Folklore\GraphQL\Support\Query;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 use GraphQL;
+
+use Laracore\Core\App\Actions\VueRouterAction;
 
 class VueRouterQuery extends Query
 {
@@ -23,13 +24,13 @@ class VueRouterQuery extends Query
     public function args()
     {
         return [
-            'model' => ['name' => 'model', 'type' => Type::string()]
+            'model' => ['name' => 'model', 'type' => Type::string()],
+            'modell' => ['name' => 'modell', 'type' => Type::string()]
         ];
     }
 
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
-      $vueRouter = app()->make(VueRouter::class);
-      return $vueRouter->get($args['model']);
+        return app()->call(VueRouterAction::class, [$args], 'run');
     }
 }
