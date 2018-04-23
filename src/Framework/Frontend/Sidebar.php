@@ -44,7 +44,7 @@ class Sidebar implements SidebarContract
             $modelConfig = $this->modelConfig($model);
             $sidebar[] = [
               'title' => $modelConfig['title'],
-              'path' => $modelConfig['path'],
+              'name' => $modelConfig['name'],
             ];
         }
         return $sidebar;

@@ -12,8 +12,8 @@ use Laracore\Core\App\Actions\SidebarAction;
 class SidebarQuery extends Query
 {
     protected $attributes = [
-        'name' => 'VueRouterQuery',
-        'description' => 'A Vue Router Query'
+        'name' => 'SidebarQuery',
+        'description' => 'A Sidebar Query'
     ];
 
     public function type()
