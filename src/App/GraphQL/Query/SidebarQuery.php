@@ -18,7 +18,7 @@ class SidebarQuery extends Query
 
     public function type()
     {
-        return Type::listOf(GraphQL::Type('CommonScalar'));
+        return Type::listOf(GraphQL::Type('Sidebar'));
     }
 
     public function args()

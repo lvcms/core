@@ -17,5 +17,6 @@ return [
     'types' => [
         'CommonScalar' =>  Laracore\Core\App\GraphQL\Scalars\Common::class,
         'VueRouter' =>  Laracore\Core\App\GraphQL\Type\VueRouterType::class,
+        'Sidebar' =>  Laracore\Core\App\GraphQL\Type\SidebarType::class,
     ],
 ];

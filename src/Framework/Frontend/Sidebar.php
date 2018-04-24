@@ -25,29 +25,30 @@ class Sidebar implements SidebarContract
      */
     public function handler($configs)
     {
-        foreach ($configs as $key => $config) {
-            $sidebar[] = [
-              'title' => $key,
-              'children' => $this->handlerModel($config)
-            ];
+        foreach ($configs as &$config) {
+            if (is_array($config['model'])) {
+                foreach ($config['model'] as $key => $model) {
+                  $config['children'][$key] = $this->handlerModel($model);
+                }
+            }else{
+                $config = $this->handlerModel($config['model']);
+            }
         }
-        return $sidebar;
+        return $configs;
     }
     /**
-     * [handlerModel 通过模块编译路由数据]
+     * [handlerModel 通过模块编译菜单数据]
      * @param  [type] $original [description]
      * @return [type]           [description]
      */
-    protected function handlerModel($config)
+    protected function handlerModel($model)
     {
-        foreach ($config as $model) {
-            $modelConfig = $this->modelConfig($model);
-            $sidebar[] = [
-              'title' => $modelConfig['title'],
-              'name' => $modelConfig['name'],
-            ];
-        }
-        return $sidebar;
+        $modelConfig = $this->modelConfig($model);
+        return [
+            'title' => $modelConfig['title'],
+            'name' => $modelConfig['name'],
+            'icon' => array_key_exists('icon', $modelConfig)? $modelConfig['icon']: null,
+        ];
     }
     /**
      * [config 获取配置]
