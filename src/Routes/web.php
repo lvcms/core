@@ -16,7 +16,7 @@
 |--------------------------------------------------------------------------
 */
 Route::group(['middleware' => 'web'], function () {
-    Route::get('/{model}/{vue_capture?}', function ($model) {
-        return view('core::index', [ 'model' => $model ]);
+    Route::get('/{package}/{vue_capture?}', function ($package) {
+        return view('core::index', [ 'package' => $package ]);
     })->where('vue_capture', '[\/\w\.-]*');
 });
