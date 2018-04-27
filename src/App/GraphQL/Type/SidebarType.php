@@ -23,8 +23,7 @@ class SidebarType extends BaseType
             'name' => [
                 'type' => Type::string(),
                 'description' => 'The name of the Sidebar'
-            ]
-            ,
+            ],
             'icon' => [
                 'type' => Type::string(),
                 'description' => 'The icon of the Sidebar'
