@@ -6,16 +6,16 @@ use Laracore\Core\Framework\Contracts\Frontend\Sidebar as SidebarContract;
 
 class Sidebar implements SidebarContract
 {
-    protected $model;
+    protected $package;
     /**
-     * 根据 model 获取对应 vueRouter
+     * 根据 package 获取对应 vueRouter
      *
-     * @param  string  $model
+     * @param  string  $package
      * @return mixed
      */
-    public function get($model)
+    public function get($package)
     {
-        $this->model = $model;
+        $this->package = $package;
         return $this->handler($this->config());
     }
     /**
@@ -57,7 +57,7 @@ class Sidebar implements SidebarContract
      */
     protected function config()
     {
-        return config($this->model.'.sidebar');
+        return config($this->package.'.sidebar');
     }
     /**
      * [modelConfig 模块配置]
@@ -65,6 +65,6 @@ class Sidebar implements SidebarContract
      */
     protected function modelConfig($model)
     {
-        return config($this->model.'.model.'.$model);
+        return config($this->package.'.model.'.$model);
     }
 }

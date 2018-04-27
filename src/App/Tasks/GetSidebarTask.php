@@ -8,6 +8,6 @@ class GetSidebarTask
 {
     public function run($args)
     {
-        return app()->make(Sidebar::class)->get($args['model']);
+        return app()->make(Sidebar::class)->get($args['package']);
     }
 }

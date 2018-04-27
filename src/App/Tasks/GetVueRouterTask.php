@@ -8,6 +8,6 @@ class GetVueRouterTask
 {
     public function run($args)
     {
-        return app()->make(VueRouter::class)->get($args['model']);
+        return app()->make(VueRouter::class)->get($args['package']);
     }
 }

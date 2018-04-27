@@ -16,7 +16,7 @@ class VueRouterAction
     public function run($args)
     {
         return app()->call(GetVueRouterTask::class, [$args], 'run');
-        // return Cache::remember('VueRouter:'.$args['model'], $this->minutes, function () use ($args) {
+        // return Cache::remember('VueRouter:'.$args['package'], $this->minutes, function () use ($args) {
         //     return app()->call(GetVueRouterTask::class, [$args], 'run');
         // });
     }

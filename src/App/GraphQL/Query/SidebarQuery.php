@@ -24,7 +24,7 @@ class SidebarQuery extends Query
     public function args()
     {
         return [
-            'model' => ['name' => 'model', 'type' => Type::string()]
+            'package' => ['name' => 'package', 'type' => Type::string()]
         ];
     }
 

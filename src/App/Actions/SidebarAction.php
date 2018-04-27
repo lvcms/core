@@ -16,7 +16,7 @@ class SidebarAction
     public function run($args)
     {
         return app()->call(GetSidebarTask::class, [$args], 'run');
-        // return Cache::remember('Sidebar:'.$args['model'], $this->minutes, function () use ($args) {
+        // return Cache::remember('Sidebar:'.$args['package'], $this->minutes, function () use ($args) {
         //     return app()->call(GetSidebarTask::class, [$args], 'run');
         // });
     }
