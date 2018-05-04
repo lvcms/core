@@ -7,7 +7,8 @@ use Laracore\Core\Framework\Contracts\Frontend\VueRouter as VueRouterContract;
 use Laracore\Core\Framework\Frontend\VueRouter;
 use Laracore\Core\Framework\Contracts\Frontend\Sidebar as SidebarContract;
 use Laracore\Core\Framework\Frontend\Sidebar;
-
+use Laracore\Core\Framework\Contracts\Frontend\Model as ModelContract;
+use Laracore\Core\Framework\Frontend\Model;
 
 class ServiceProvider extends LaravelServiceProvider
 {
@@ -62,10 +63,13 @@ class ServiceProvider extends LaravelServiceProvider
     public function bind()
     {
         $this->app->bind(VueRouterContract::class, function () {
-              return new VueRouter();
+            return new VueRouter();
         });
         $this->app->bind(SidebarContract::class, function () {
-              return new Sidebar();
+            return new Sidebar();
+        });
+        $this->app->bind(ModelContract::class, function () {
+            return new Model();
         });
     }
 }
