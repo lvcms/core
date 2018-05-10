@@ -28,4 +28,14 @@ class Model implements ModelContract
     {
         return $this->config()['layout'];
     }
+
+    public function itemLayout()
+    {
+        return $this->config()['item'];
+    }
+
+    public function getItem()
+    {
+        return $this->config()['index'];
+    }
 }

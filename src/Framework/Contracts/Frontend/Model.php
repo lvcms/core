@@ -20,8 +20,16 @@ interface Model
      */
     public function config();
     /**
-     * [getLayout 获取模型 Layout 布局]
+     * [layout 获取模型 Layout 布局]
      * @return [type] [description]
      */
     public function layout();
+    /**
+     * [itemLayout 获取模型 项目 layout 布局]
+     */
+    public function itemLayout();
+    /**
+     * [getItem 获取模型 Item 项目]
+     */
+    public function getItem();
 }
