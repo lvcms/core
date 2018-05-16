@@ -29,7 +29,7 @@ class Model implements ModelContract
         return $this->config()['layout'];
     }
 
-    public function itemLayout()
+    public function item()
     {
         return $this->config()['item'];
     }

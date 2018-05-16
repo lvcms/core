@@ -4,13 +4,13 @@ namespace Laracore\Core\App\Tasks;
 
 use Laracore\Core\Framework\Contracts\Frontend\Model;
 
-class GetModelItemLayoutTask
+class GetModelItemTask
 {
     public function run($args)
     {
         $model = app()->make(Model::class);
         $model->setPackage($args['package']);
         $model->setModel($args['model']);
-        return $model->itemLayout();
+        return $model->item();
     }
 }

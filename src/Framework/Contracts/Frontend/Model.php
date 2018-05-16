@@ -25,9 +25,9 @@ interface Model
      */
     public function layout();
     /**
-     * [itemLayout 获取模型 项目 layout 布局]
+     * [item 获取模型 项目 layout 布局]
      */
-    public function itemLayout();
+    public function item();
     /**
      * [getItem 获取模型 Item 项目]
      */

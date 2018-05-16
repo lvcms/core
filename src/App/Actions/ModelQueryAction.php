@@ -4,7 +4,7 @@ namespace Laracore\Core\App\Actions;
 
 use Cache;
 use Laracore\Core\App\Tasks\GetModelLayoutTask;
-use Laracore\Core\App\Tasks\GetModelItemLayoutTask;
+use Laracore\Core\App\Tasks\GetModelItemTask;
 
 class ModelQueryAction
 {
@@ -18,13 +18,13 @@ class ModelQueryAction
     {
 
       // return Cache::remember($args['package'].":".$args['model'], $this->minutes, function () use ($args) {
-      //     return app()->call(GetModelLayoutTask::class, [$args], 'run');
-      // });
+        //     return app()->call(GetModelLayoutTask::class, [$args], 'run');
+        // });
         $layout  = app()->call(GetModelLayoutTask::class, [$args], 'run');
-        $itemLayout = app()->call(GetModelItemLayoutTask::class, [$args], 'run');
+        $item = app()->call(GetModelItemTask::class, [$args], 'run');
         return [[
             "layout" => $layout,
-            "itemLayout" => $itemLayout
+            "item" => $item
           ]];
     }
 }
