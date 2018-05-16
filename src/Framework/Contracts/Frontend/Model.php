@@ -28,4 +28,12 @@ interface Model
      * [item 获取模型 项目 layout 布局]
      */
     public function item();
+    /**
+     * [model 获取模型类]
+     */
+    public function model();
+    /**
+     * [value 获取数据]
+     */
+    public function value();
 }

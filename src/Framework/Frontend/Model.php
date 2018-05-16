@@ -7,7 +7,8 @@ use Laracore\Core\Framework\Contracts\Frontend\Model as ModelContract;
 class Model implements ModelContract
 {
     protected $package;
-    protected $model;
+    protected $modelName;
+
 
     public function setPackage($package)
     {
@@ -16,12 +17,12 @@ class Model implements ModelContract
 
     public function setModel($model)
     {
-        $this->model = $model;
+        $this->modelName = $model;
     }
 
     public function config()
     {
-        return config($this->package.'.model.'.$this->model);
+        return config($this->package.'.model.'.$this->modelName);
     }
 
     public function layout()
@@ -32,5 +33,16 @@ class Model implements ModelContract
     public function item()
     {
         return $this->config()['item'];
+    }
+
+    public function model()
+    {
+        return $this->config()['model'];
+    }
+
+    public function value()
+    {
+        dd($this->model());
+        return $this->config();
     }
 }
