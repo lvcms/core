@@ -5,6 +5,7 @@ namespace Laracore\Core\App\Actions;
 use Cache;
 use Laracore\Core\App\Tasks\GetModelLayoutTask;
 use Laracore\Core\App\Tasks\GetModelItemTask;
+use Laracore\Core\App\Tasks\GetModelValueTask;
 
 class ModelQueryAction
 {
@@ -23,7 +24,7 @@ class ModelQueryAction
         $layout  = app()->call(GetModelLayoutTask::class, [$args], 'run');
         $item = app()->call(GetModelItemTask::class, [$args], 'run');
         // $value = null;
-        $value = array_key_exists('item', $args)? app()->call(GetModelItemTask::class, [$args], 'run'): null;
+        $value = array_key_exists('item', $args)? app()->call(GetModelValueTask::class, [$args], 'run'): null;
         return [
             "layout" => $layout,
             "item" => $item,
