@@ -18,14 +18,15 @@ class ModelQuery extends Query
 
     public function type()
     {
-        return Type::listOf(GraphQL::Type('Model'));
+        return Type::nonNull(GraphQL::Type('Model'));
     }
 
     public function args()
     {
         return [
             'package' => ['name' => 'package', 'type' => Type::string()],
-            'model' => ['name' => 'model', 'type' => Type::string()]
+            'model' => ['name' => 'model', 'type' => Type::string()],
+            'item' => ['name' => 'item', 'type' => Type::string()],
         ];
     }
 

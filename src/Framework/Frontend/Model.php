@@ -33,9 +33,4 @@ class Model implements ModelContract
     {
         return $this->config()['item'];
     }
-
-    public function getItem()
-    {
-        return $this->config()['index'];
-    }
 }

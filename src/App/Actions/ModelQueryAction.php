@@ -22,9 +22,12 @@ class ModelQueryAction
         // });
         $layout  = app()->call(GetModelLayoutTask::class, [$args], 'run');
         $item = app()->call(GetModelItemTask::class, [$args], 'run');
-        return [[
+        // $value = null;
+        $value = array_key_exists('item', $args)? app()->call(GetModelItemTask::class, [$args], 'run'): null;
+        return [
             "layout" => $layout,
-            "item" => $item
-          ]];
+            "item" => $item,
+            "value" => $value
+          ];
     }
 }
