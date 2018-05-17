@@ -23,7 +23,6 @@ class ModelQueryAction
         // });
         $layout  = app()->call(GetModelLayoutTask::class, [$args], 'run');
         $item = app()->call(GetModelItemTask::class, [$args], 'run');
-        // $value = null;
         $value = array_key_exists('item', $args)? app()->call(GetModelValueTask::class, [$args], 'run'): null;
         return [
             "layout" => $layout,

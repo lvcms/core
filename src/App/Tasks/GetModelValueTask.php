@@ -11,6 +11,7 @@ class GetModelValueTask
         return app()->make(Model::class)
                 ->setPackage($args['package'])
                 ->setModel($args['model'])
+                ->setItemName($args['item'])
                 ->value();
     }
 }
