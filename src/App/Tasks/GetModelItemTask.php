@@ -8,9 +8,9 @@ class GetModelItemTask
 {
     public function run($args)
     {
-        $model = app()->make(Model::class);
-        $model->setPackage($args['package']);
-        $model->setModel($args['model']);
-        return $model->item();
+        return app()->make(Model::class)
+                ->setPackage($args['package'])
+                ->setModel($args['model'])
+                ->item();
     }
 }

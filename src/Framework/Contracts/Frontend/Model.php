@@ -15,6 +15,11 @@ interface Model
      */
     public function setModel($model);
     /**
+     * [setItemName 设置项目名称]
+     * @param [type] $itemName [description]
+     */
+    public function setItemName($itemName);
+    /**
      * [config  读取对应模型配置]
      * @return [type] [description]
      */

@@ -8,9 +8,9 @@ class GetModelValueTask
 {
     public function run($args)
     {
-        $model = app()->make(Model::class);
-        $model->setPackage($args['package']);
-        $model->setModel($args['model']);
-        return $model->value();
+        return app()->make(Model::class)
+                ->setPackage($args['package'])
+                ->setModel($args['model'])
+                ->value();
     }
 }

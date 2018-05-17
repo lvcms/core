@@ -8,16 +8,25 @@ class Model implements ModelContract
 {
     protected $package;
     protected $modelName;
+    protected $itemName;
 
 
     public function setPackage($package)
     {
         $this->package = $package;
+        return $this;
     }
 
     public function setModel($model)
     {
         $this->modelName = $model;
+        return $this;
+    }
+
+    public function setItemName($itemName)
+    {
+        $this->itemName = $itemName;
+        return $this;
     }
 
     public function config()
@@ -37,12 +46,13 @@ class Model implements ModelContract
 
     public function model()
     {
-        return $this->config()['model'];
+        return app()->make($this->config()['model'])->setConfig($this->config());
     }
 
     public function value()
     {
         dd($this->model());
+        return $this->itemName;
         return $this->config();
     }
 }
