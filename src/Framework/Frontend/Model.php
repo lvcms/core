@@ -51,6 +51,6 @@ class Model implements ModelContract
 
     public function value()
     {
-        return $this->model()->value();
+        return $this->model()->setItem($this->item()[$this->itemName]['item'])->value();
     }
 }
