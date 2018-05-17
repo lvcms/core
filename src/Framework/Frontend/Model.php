@@ -51,8 +51,6 @@ class Model implements ModelContract
 
     public function value()
     {
-        dd($this->model());
-        return $this->itemName;
-        return $this->config();
+        return $this->model()->value();
     }
 }
