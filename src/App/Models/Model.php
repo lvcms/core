@@ -41,10 +41,6 @@ class Model extends EloquentModel
         $arrangementValue = $this->config['arrangement']['value'];
         foreach ($this->item as $key => $item) {
             $value[$key] = $this->where($arrangementKey, '=', $key)->first()->$arrangementValue;
-            // 如果为空显示默认值
-            if (empty($value[$key])) {
-                $value[$key] = $item['default'];
-            }
         }
         return $value;
     }
