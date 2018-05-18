@@ -23,24 +23,19 @@ class Model extends EloquentModel
 
     public function value()
     {
-        if (!$this->config['arrangement']['column']) {
-            return $this->getKeyValue();
-        }
+        return $this->getKeyValue();
     }
     /**
-     * [getKeyValue 根据 key 获取value]
-     * @param  [type] $arrangement [description]
+     * [getKeyValue 根据 key 获取 value]
      * @return [type]              [description]
      */
     public function getKeyValue()
     {
         $value = [];
-        // 查询 Key 字段名
-        $arrangementKey = $this->config['arrangement']['key'];
-        // 查询 alue 字段名
-        $arrangementValue = $this->config['arrangement']['value'];
+        $keyAlias = empty($this->config['keyValueAlias'])? 'key': $this->config['keyValueAlias']['key'];
+        $valueAlias = empty($this->config['keyValueAlias'])? 'value': $this->config['keyValueAlias']['value'];
         foreach ($this->item as $key => $item) {
-            $value[$key] = $this->where($arrangementKey, '=', $key)->first()->$arrangementValue;
+            $value[$key] = $this->where($keyAlias, '=', $key)->first()->$valueAlias;
         }
         return $value;
     }
