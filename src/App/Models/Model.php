@@ -35,8 +35,31 @@ class Model extends EloquentModel
         $keyAlias = empty($this->config['keyValueAlias'])? 'key': $this->config['keyValueAlias']['key'];
         $valueAlias = empty($this->config['keyValueAlias'])? 'value': $this->config['keyValueAlias']['value'];
         foreach ($this->item as $key => $item) {
-            $value[$key] = $this->where($keyAlias, '=', $key)->first()->$valueAlias;
+            $value[$key] = $this->componentJsonTypeChange(
+                $item['component'],
+                $this->where($keyAlias, '=', $key)->first()->$valueAlias
+            );
         }
         return $value;
+    }
+    /**
+     * [componentJsonTypeChange 根据使用自检转换对应数据类型]
+     * @param  [type] $component [组件名称]
+     * @param  [type] $value     [原始数据]
+     * @return [type]            [description]
+     */
+    public function componentJsonTypeChange($component, $value)
+    {
+        switch ($component) {
+            case 'input':
+                return is_numeric($value)? (Float)$value: (String)$value;
+                break;
+            case 'switch':
+                return (Boolean)$value;
+                break;
+            default:
+                return $value;
+                break;
+        }
     }
 }
