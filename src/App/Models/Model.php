@@ -43,7 +43,7 @@ class Model extends EloquentModel
         return $value;
     }
     /**
-     * [componentJsonTypeChange 根据使用自检转换对应数据类型]
+     * [componentJsonTypeChange 根据使用组件转换对应数据类型]
      * @param  [type] $component [组件名称]
      * @param  [type] $value     [原始数据]
      * @return [type]            [description]
