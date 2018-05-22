@@ -8,10 +8,20 @@ class Model extends EloquentModel
 {
     protected $config;
     protected $item;
+    protected $keyAlias;
+    protected $valueAlias;
 
+    /**
+     * [setConfig 设置配置参数]
+     * keyValueAlias 设置 keyAlias
+     * keyValueAlias 设置 valueAlias
+     * @param [type] $config [description]
+     */
     public function setConfig($config)
     {
         $this->config = $config;
+        $this->keyAlias = empty($this->config['keyValueAlias'])? 'key': $this->config['keyValueAlias']['key'];
+        $this->valueAlias = empty($this->config['keyValueAlias'])? 'value': $this->config['keyValueAlias']['value'];
         return $this;
     }
 
@@ -20,10 +30,41 @@ class Model extends EloquentModel
         $this->item = $item;
         return $this;
     }
-
+    /**
+     * [value 获取 value]
+     * @return [type] [description]
+     */
     public function value()
     {
         return $this->getKeyValue();
+    }
+    /**
+     * [updateValue 更新数据]
+     * @param  [type] $values [description]
+     * @return [type]         [description]
+     */
+    public function updateValue($values)
+    {
+        if (empty($values->id)) {
+            return $this->updateKeyValue($values);
+        } else {
+        }
+    }
+    /**
+     * [updateKeyValue 更新 key 数据]
+     * @param  [type] $values [description]
+     * @return [type]         [description]
+     */
+    public function updateKeyValue($values)
+    {
+        try {
+            foreach ($values as $key => $value) {
+                $this->where($this->keyAlias, '=', $key)->update([$this->valueAlias => $value]);
+            }
+        } catch (Exception $e) {
+            return false;
+        }
+        return true;
     }
     /**
      * [getKeyValue 根据 key 获取 value]
@@ -32,12 +73,11 @@ class Model extends EloquentModel
     public function getKeyValue()
     {
         $value = [];
-        $keyAlias = empty($this->config['keyValueAlias'])? 'key': $this->config['keyValueAlias']['key'];
-        $valueAlias = empty($this->config['keyValueAlias'])? 'value': $this->config['keyValueAlias']['value'];
+        $valueAlias = $this->valueAlias;
         foreach ($this->item as $key => $item) {
             $value[$key] = $this->componentJsonTypeChange(
                 $item['component'],
-                $this->where($keyAlias, '=', $key)->first()->$valueAlias
+                $this->where($this->keyAlias, '=', $key)->first()->$valueAlias
             );
         }
         return $value;
