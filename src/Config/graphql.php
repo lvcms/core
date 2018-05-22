@@ -8,8 +8,7 @@ return [
                 'model' => Laracore\Core\App\GraphQL\Query\ModelQuery::class,
             ],
             'mutation' => [
-                // 'updateUserPassword' =>  Laracore\Core\App\GraphQL\Mutation\UpdateUserPasswordMutation::class,
-                // 'updateUserEmail' =>  Laracore\Core\App\GraphQL\Mutation\UpdateUserEmailMutation::class,
+                'updateModel' =>  Laracore\Core\App\GraphQL\Mutation\UpdateModelMutation::class,
             ]
         ]
     ],
@@ -19,5 +18,6 @@ return [
         'VueRouter' =>  Laracore\Core\App\GraphQL\Type\VueRouterType::class,
         'Sidebar' =>  Laracore\Core\App\GraphQL\Type\SidebarType::class,
         'Model' =>  Laracore\Core\App\GraphQL\Type\ModelType::class,
+        'UpdateModel' =>  Laracore\Core\App\GraphQL\Type\UpdateModelType::class,
     ],
 ];

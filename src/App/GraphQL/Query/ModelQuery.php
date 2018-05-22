@@ -24,8 +24,8 @@ class ModelQuery extends Query
     public function args()
     {
         return [
-            'package' => ['name' => 'package', 'type' => Type::string()],
-            'model' => ['name' => 'model', 'type' => Type::string()],
+            'package' => ['name' => 'package', 'type' => Type::nonNull(Type::string())],
+            'model' => ['name' => 'model', 'type' => Type::nonNull(Type::string())],
             'item' => ['name' => 'item', 'type' => Type::string()],
         ];
     }

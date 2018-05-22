@@ -55,7 +55,7 @@ class ServiceProvider extends LaravelServiceProvider
         // GraphQL 配置
         config(['graphql.types' => array_merge(config('graphql.types'), config('coreGraphql.types')) ]);
         config(['graphql.schemas.default.query' => array_merge(config('graphql.schemas.default.query'), config('coreGraphql.schemas.default.query'))]);
-        // config(['graphql.schemas.default.mutation.updateUserPassword' => App\GraphQL\Mutation\UpdateUserPasswordMutation::class]);
+        config(['graphql.schemas.default.mutation' => array_merge(config('graphql.schemas.default.mutation'), config('coreGraphql.schemas.default.mutation'))]);
     }
     /**
      * [bind 绑定实例]
