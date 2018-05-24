@@ -59,6 +59,9 @@ class Model extends EloquentModel
     {
         try {
             foreach ($values as $key => $value) {
+                if (is_array($value)) {
+                    $value = json_encode($value);
+                }
                 $this->where($this->keyAlias, '=', $key)->update([$this->valueAlias => $value]);
             }
         } catch (Exception $e) {
@@ -92,6 +95,12 @@ class Model extends EloquentModel
     {
         switch ($component) {
             case 'input':
+                return is_numeric($value)? (Float)$value: (String)$value;
+                break;
+            case 'checkbox':
+                return json_decode($value);
+                break;
+            case 'radio':
                 return is_numeric($value)? (Float)$value: (String)$value;
                 break;
             case 'switch':
