@@ -100,6 +100,9 @@ class Model extends EloquentModel
             case 'checkbox':
                 return json_decode($value);
                 break;
+            case 'select':
+                return json_decode($value)? json_decode($value): $value;
+                break;
             case 'radio':
                 return is_numeric($value)? (Float)$value: (String)$value;
                 break;
