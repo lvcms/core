@@ -48,6 +48,7 @@ class Model extends EloquentModel
         if (empty($values->id)) {
             return $this->updateKeyValue($values);
         } else {
+            return '';
         }
     }
     /**
@@ -65,9 +66,17 @@ class Model extends EloquentModel
                 $this->where($this->keyAlias, '=', $key)->update([$this->valueAlias => $value]);
             }
         } catch (Exception $e) {
-            return false;
+            return [
+                'status' => 500,
+                'message' => '数据更新失败',
+                'value' => $values
+            ];
         }
-        return true;
+        return [
+            'status' => 200,
+            'message' => '数据更新成功',
+            'value' => $values
+        ];
     }
     /**
      * [getKeyValue 根据 key 获取 value]
