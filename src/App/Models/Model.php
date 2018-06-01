@@ -22,6 +22,7 @@ class Model extends EloquentModel
         $this->config = $config;
         $this->keyAlias = empty($this->config['keyValueAlias'])? 'key': $this->config['keyValueAlias']['key'];
         $this->valueAlias = empty($this->config['keyValueAlias'])? 'value': $this->config['keyValueAlias']['value'];
+        $this->valueAlias = empty($this->config['keyValueAlias'])? 'null': $this->config['keyValueAlias']['value'];
         return $this;
     }
 
@@ -39,11 +40,11 @@ class Model extends EloquentModel
         return $this->getKeyValue();
     }
     /**
-     * [updateValue 更新数据]
+     * [handlerFormRequest 更新数据]
      * @param  [type] $values [description]
      * @return [type]         [description]
      */
-    public function updateValue($values)
+    public function handlerFormRequest($values)
     {
         if (empty($values->id)) {
             return $this->updateKeyValue($values);

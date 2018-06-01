@@ -56,6 +56,6 @@ class Model implements ModelContract
 
     public function update($values)
     {
-        return $this->model()->updateValue($values);
+        return $this->model()->handlerFormRequest($values);
     }
 }
