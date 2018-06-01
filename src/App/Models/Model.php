@@ -2,14 +2,13 @@
 
 namespace Laracore\Core\App\Models;
 
-use Illuminate\Database\Eloquent\Model as EloquentModel;
-
-class Model extends EloquentModel
+trait Model
 {
     protected $config;
     protected $item;
     protected $keyAlias;
     protected $valueAlias;
+    protected $handlerFormRequest;
 
     /**
      * [setConfig 设置配置参数]
@@ -22,7 +21,7 @@ class Model extends EloquentModel
         $this->config = $config;
         $this->keyAlias = empty($this->config['keyValueAlias'])? 'key': $this->config['keyValueAlias']['key'];
         $this->valueAlias = empty($this->config['keyValueAlias'])? 'value': $this->config['keyValueAlias']['value'];
-        $this->valueAlias = empty($this->config['keyValueAlias'])? 'null': $this->config['keyValueAlias']['value'];
+        $this->handlerFormRequest = empty($this->config['handlerFormRequest'])? null: $this->config['handlerFormRequest'];
         return $this;
     }
 
@@ -46,10 +45,15 @@ class Model extends EloquentModel
      */
     public function handlerFormRequest($values)
     {
-        if (empty($values->id)) {
-            return $this->updateKeyValue($values);
+        if (method_exists($this, $this->handlerFormRequest)) {
+            // 自定义方法处理
+            return $this->{$this->handlerFormRequest}($values);
         } else {
-            return '';
+            if (empty($values->id)) {
+                return $this->updateKeyValue($values);
+            } else {
+                return '';
+            }
         }
     }
     /**

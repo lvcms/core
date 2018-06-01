@@ -4,10 +4,11 @@ namespace Laracore\Core\App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laracore\Core\App\Models\Model as LaracoreModel;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, LaracoreModel;
 
     /**
      * The attributes that are mass assignable.
@@ -26,4 +27,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getToken($values)
+    {
+        return [
+            'status' => 200,
+            'message' => '登录成功',
+            'value' => $values
+        ];
+    }
 }
