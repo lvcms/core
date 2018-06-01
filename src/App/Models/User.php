@@ -27,9 +27,30 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
+    /**
+     * [findForUser 根据用户名或者邮箱、手机找到用户信息]
+     */
+    public function findForUser($username)
+    {
+        return $this->where('name', $username)
+                    ->orwhere('email', $username)
+                    // ->orwhere('mobile', $username)
+                    ->first();
+    }
 
     public function getToken($values)
     {
+        // $user = $this->findForUser($values->username);
+        // if (Auth::attempt(['email' => $values->username, 'password' => $password], $remember)) {
+        //     // The user is being remembered...
+        // }
+        $token = auth()->attempt(['email' => $values->username, 'password' => $values->username]);
+        dd($token);
+        dd($user);
         return [
             'status' => 200,
             'message' => '登录成功',
