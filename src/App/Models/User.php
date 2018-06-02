@@ -81,6 +81,7 @@ class User extends Authenticatable implements JWTSubject
               'message' => '登录成功',
               'value' => [
                   'token' => $token,
+                  'redirect' => '/admin',
                   'user' => [
                       'id' => $user->id,
                       'name' => $user->name,
