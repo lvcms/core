@@ -2,6 +2,7 @@
 
 namespace Laracore\Core\Framework\Frontend;
 
+use JWTAuth;
 use Laracore\Core\Framework\Contracts\Frontend\Model as ModelContract;
 
 class Model implements ModelContract
@@ -57,5 +58,10 @@ class Model implements ModelContract
     public function update($values)
     {
         return $this->model()->handlerFormRequest($values);
+    }
+
+    public function authenticated()
+    {
+        return JWTAuth::parseToken()->authenticate() ? true : false;
     }
 }

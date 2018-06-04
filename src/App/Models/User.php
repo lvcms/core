@@ -31,20 +31,20 @@ class User extends Authenticatable implements JWTSubject
         'password', 'remember_token',
     ];
 
-     public function getJWTIdentifier()
-     {
-         return $this->getKey();
-     }
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
 
-     /**
-      * Return a key value array, containing any custom claims to be added to the JWT.
-      *
-      * @return array
-      */
-     public function getJWTCustomClaims()
-     {
-         return [];
-     }
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 
     public function setPasswordAttribute($value)
     {
@@ -61,12 +61,13 @@ class User extends Authenticatable implements JWTSubject
                     ->first();
     }
 
-    public function attemptToken($credentials) {
+    public function attemptToken($credentials)
+    {
         if ($token = JWTAuth::attempt(['email' => $credentials->username, 'password' => $credentials->password])) {
             return $token;
-        }elseif($token = JWTAuth::attempt(['name' => $credentials->username, 'password' => $credentials->password])){
+        } elseif ($token = JWTAuth::attempt(['name' => $credentials->username, 'password' => $credentials->password])) {
             return $token;
-        }elseif($token = JWTAuth::attempt(['mobile' => $credentials->username, 'password' => $credentials->password])){
+        } elseif ($token = JWTAuth::attempt(['mobile' => $credentials->username, 'password' => $credentials->password])) {
             return $token;
         }
         return null;
@@ -75,8 +76,8 @@ class User extends Authenticatable implements JWTSubject
     public function login($credentials)
     {
         if ($token = $this->attemptToken($credentials)) {
-          $user = Auth::user();
-          return [
+            $user = Auth::user();
+            return [
               'status' => 200,
               'message' => '登录成功',
               'value' => [
@@ -89,8 +90,8 @@ class User extends Authenticatable implements JWTSubject
                   ]
               ]
           ];
-        }else{
-          return [
+        } else {
+            return [
               'status' => 200,
               'message' => '登录失败',
               'value' => $request

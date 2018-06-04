@@ -8,6 +8,7 @@ use GraphQL\Type\Definition\Type;
 use GraphQL;
 
 use Laracore\Core\App\Actions\ModelQueryAction;
+use Laracore\Core\App\Actions\ModelAuthAction;
 
 class ModelQuery extends Query
 {
@@ -33,5 +34,10 @@ class ModelQuery extends Query
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
         return app()->call(ModelQueryAction::class, [$args], 'run');
+    }
+
+    public function authenticated($root, $args, $context)
+    {
+        return app()->call(ModelAuthAction::class, [$args], 'run');
     }
 }

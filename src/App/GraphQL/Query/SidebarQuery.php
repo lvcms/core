@@ -2,6 +2,7 @@
 
 namespace Laracore\Core\App\GraphQL\Query;
 
+use JWTAuth;
 use Folklore\GraphQL\Support\Query;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;

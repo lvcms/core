@@ -47,4 +47,9 @@ interface Model
      * @return [type]         [description]
      */
     public function update($values);
+    /**
+     * [authenticated 权限认证]
+     * @return [type]         [description]
+     */
+    public function authenticated();
 }

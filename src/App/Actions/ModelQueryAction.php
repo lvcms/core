@@ -17,13 +17,13 @@ class ModelQueryAction
 
     public function run($args)
     {
-
-      // return Cache::remember($args['package'].":".$args['model'], $this->minutes, function () use ($args) {
+        // return Cache::remember($args['package'].":".$args['model'], $this->minutes, function () use ($args) {
         //     return app()->call(GetModelLayoutTask::class, [$args], 'run');
         // });
         $layout  = app()->call(GetModelLayoutTask::class, [$args], 'run');
         $item = app()->call(GetModelItemTask::class, [$args], 'run');
         $value = array_key_exists('item', $args)? app()->call(GetModelValueTask::class, [$args], 'run'): null;
+
         return [
             "layout" => $layout,
             "item" => $item,
