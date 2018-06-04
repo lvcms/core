@@ -3,6 +3,7 @@
 namespace Laracore\Core\Framework\Frontend;
 
 use JWTAuth;
+use Exception;
 use Laracore\Core\Framework\Contracts\Frontend\Model as ModelContract;
 
 class Model implements ModelContract
@@ -62,6 +63,10 @@ class Model implements ModelContract
 
     public function authenticated()
     {
-        return JWTAuth::parseToken()->authenticate() ? true : false;
+        try {
+          return JWTAuth::parseToken()->authenticate() ? true : false;
+        } catch (Exception $e) {
+          return false;
+        }
     }
 }
