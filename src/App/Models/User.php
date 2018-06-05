@@ -67,8 +67,8 @@ class User extends Authenticatable implements JWTSubject
             return $token;
         } elseif ($token = JWTAuth::attempt(['name' => $credentials->username, 'password' => $credentials->password])) {
             return $token;
-        } elseif ($token = JWTAuth::attempt(['mobile' => $credentials->username, 'password' => $credentials->password])) {
-            return $token;
+            // } elseif ($token = JWTAuth::attempt(['mobile' => $credentials->username, 'password' => $credentials->password])) {
+        //     return $token;
         }
         return null;
     }
@@ -94,7 +94,7 @@ class User extends Authenticatable implements JWTSubject
             return [
               'status' => 200,
               'message' => '登录失败',
-              'value' => $request
+              'value' => $credentials
           ];
         }
     }
