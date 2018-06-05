@@ -91,11 +91,7 @@ class User extends Authenticatable implements JWTSubject
               ]
           ];
         } else {
-            return [
-              'status' => 200,
-              'message' => '登录失败',
-              'value' => $credentials
-          ];
+            abort(401.1, '登录失败');
         }
     }
 }

@@ -71,11 +71,7 @@ trait Model
                 $this->where($this->keyAlias, '=', $key)->update([$this->valueAlias => $value]);
             }
         } catch (Exception $e) {
-            return [
-                'status' => 500,
-                'message' => '数据更新失败',
-                'value' => $values
-            ];
+            abort(501, '数据更新失败');
         }
         return [
             'status' => 200,
