@@ -35,6 +35,11 @@ class Model implements ModelContract
     {
         return config($this->package.'.model.'.$this->modelName);
     }
+    
+    public function configAuth()
+    {
+        return isset($this->config()['auth'])? $this->config()['auth']: true;
+    }
 
     public function layout()
     {
@@ -63,7 +68,7 @@ class Model implements ModelContract
 
     public function authenticated()
     {
-        if ($this->config()['auth']) {
+        if ($this->configAuth()) {
           try {
               return JWTAuth::parseToken()->authenticate() ? true : false;
           } catch (Exception $e) {

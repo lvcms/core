@@ -25,6 +25,11 @@ interface Model
      */
     public function config();
     /**
+     * [configAuth  获取是否允需要用户认证]
+     * @return [type] [description]
+     */
+    public function configAuth();
+    /**
      * [layout 获取模型 Layout 布局]
      * @return [type] [description]
      */
