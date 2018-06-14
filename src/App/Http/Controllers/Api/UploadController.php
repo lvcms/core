@@ -3,17 +3,15 @@
 namespace Laracore\Core\App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Laracore\Core\App\Actions\UploadAction;
 
 class UploadController extends Controller
 {
-
-    public function __construct()
-    {
-
-    }
-
+    /**
+     * 交给 UploadAction 处理
+     */
     public function index()
     {
-      dd('aaa');
+      return app()->call(UploadAction::class, [],'run');
     }
 }
