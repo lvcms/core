@@ -19,6 +19,5 @@ return [
         'Sidebar' =>  Laracore\Core\App\GraphQL\Type\SidebarType::class,
         'Model' =>  Laracore\Core\App\GraphQL\Type\ModelType::class,
         'UpdateModel' =>  Laracore\Core\App\GraphQL\Type\UpdateModelType::class,
-        'UpdateFiles' =>  Laracore\Core\App\GraphQL\Type\UpdateFilesType::class,
     ],
 ];

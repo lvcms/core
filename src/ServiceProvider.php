@@ -20,6 +20,7 @@ class ServiceProvider extends LaravelServiceProvider
     public function boot()
     {
         //配置路由
+        $this->loadRoutesFrom(__DIR__.'/Routes/api.php');
         $this->loadRoutesFrom(__DIR__.'/Routes/web.php');
         //视图
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'core');
