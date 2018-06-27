@@ -24,9 +24,9 @@ class CoreUploadsTable extends Migration
             $table->char('md5', 32)              ->comment('文件MD5');
             $table->char('sha1', 40)             ->comment('文件SHA1编码');
             $table->string('disk', 15)         ->comment('文件存储驱动');
-            $table->bigInteger('download')      ->comment('文件下载次数')->unsigned();
+            $table->bigInteger('download')      ->comment('文件下载次数')->unsigned()->default(0);
             $table->string('status',16)       ->comment('状态')->default('open');
-            $table->bigInteger('sort')          ->comment('排序')->unsigned();
+            $table->bigInteger('sort')          ->comment('排序')->unsigned()->default(0);
             $table->timestamps();
         });
     }
