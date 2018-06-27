@@ -3,7 +3,6 @@
 namespace Laracore\Core\App\Actions;
 
 use Laracore\Core\App\Tasks\UpdateModelTask;
-
 class UpdateModelAction
 {
     public function run($args)
