@@ -13,6 +13,7 @@ class User extends Authenticatable implements JWTSubject
 {
     use Notifiable, LaracoreModel;
 
+    public $table = 'core_users';
     /**
      * The attributes that are mass assignable.
      *
