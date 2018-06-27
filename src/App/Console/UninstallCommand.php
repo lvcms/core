@@ -14,7 +14,7 @@ class UninstallCommand extends Command
      * @var string
      * @translator laravelacademy.org
      */
-    protected $signature = 'corecmf:core:uninstall';
+    protected $signature = 'laracore:core:uninstall';
 
     /**
      * The console command description.
