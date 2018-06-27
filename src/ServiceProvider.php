@@ -19,6 +19,13 @@ class ServiceProvider extends LaravelServiceProvider
      */
     public function boot()
     {
+        //加载artisan commands
+        $this->commands([
+            \Laracore\Core\App\Console\InstallCommand::class,
+            \Laracore\Core\App\Console\UninstallCommand::class,
+        ]);
+        //迁移文件配置
+        $this->loadMigrationsFrom(__DIR__.'/Databases/migrations');
         //配置路由
         $this->loadRoutesFrom(__DIR__.'/Routes/api.php');
         $this->loadRoutesFrom(__DIR__.'/Routes/web.php');
