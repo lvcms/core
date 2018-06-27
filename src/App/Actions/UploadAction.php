@@ -24,7 +24,7 @@ class UploadAction
               $this->request->file->getRealPath(),
               $this->request->file->getClientOriginalName(),
               $this->request->file->getClientOriginalExtension(),
-              $this->request->package
+              $this->request->type.DIRECTORY_SEPARATOR.$this->request->package
             ], 'run');
         }
     }
