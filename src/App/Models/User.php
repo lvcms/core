@@ -58,7 +58,7 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->where('name', $username)
                     ->orwhere('email', $username)
-                    // ->orwhere('mobile', $username)
+                    ->orwhere('mobile', $username)
                     ->first();
     }
 
@@ -68,8 +68,8 @@ class User extends Authenticatable implements JWTSubject
             return $token;
         } elseif ($token = JWTAuth::attempt(['name' => $credentials->username, 'password' => $credentials->password])) {
             return $token;
-            // } elseif ($token = JWTAuth::attempt(['mobile' => $credentials->username, 'password' => $credentials->password])) {
-        //     return $token;
+        } elseif ($token = JWTAuth::attempt(['mobile' => $credentials->username, 'password' => $credentials->password])) {
+            return $token;
         }
         return null;
     }
@@ -79,18 +79,18 @@ class User extends Authenticatable implements JWTSubject
         if ($token = $this->attemptToken($credentials)) {
             $user = Auth::user();
             return [
-              'status' => 200,
-              'message' => '登录成功',
-              'value' => [
-                  'token' => $token,
-                  'redirect' => '/admin',
-                  'user' => [
-                      'id' => $user->id,
-                      'name' => $user->name,
-                      'email' => $user->email,
-                  ]
-              ]
-          ];
+                'status' => 200,
+                'message' => '登录成功',
+                'value' => [
+                    'token' => $token,
+                    'redirect' => '/admin',
+                    'user' => [
+                        'id' => $user->id,
+                        'name' => $user->name,
+                        'email' => $user->email,
+                    ]
+                ]
+            ];
         } else {
             abort(401.1, '登录失败');
         }

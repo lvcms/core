@@ -55,9 +55,9 @@ class ServiceProvider extends LaravelServiceProvider
     public function initConfig()
     {
         $this->mergeConfigFrom(
-                  __DIR__.'/Config/graphql.php',
-                  'coreGraphql'
-            );
+            __DIR__.'/Config/graphql.php',
+            'coreGraphql'
+        );
         //设置 user 模型位置
         config(['auth.providers.users.model' => App\Models\User::class]);
         // GraphQL 配置
