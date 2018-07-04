@@ -16,7 +16,9 @@ class VueRouter implements VueRouterContract
     public function get($package)
     {
         $this->package = $package;
-        return $this->handler($this->config());
+        return $this->handler(
+            $this->loadPackageConfig($this->config())
+        );
     }
     /**
      * [handler 处理配置信息编译成前端路由]
@@ -26,7 +28,7 @@ class VueRouter implements VueRouterContract
     public function handler($configs)
     {
         $vueRouter = collect($configs)->map(function ($config) {
-            if (!empty($config['originalChildren'])) {
+            if (array_key_exists('originalChildren', $config)) {
                 $config['children'] = array_merge($config['children'], $this->handlerModel($config['originalChildren']));
             }
             return $config;
@@ -42,17 +44,16 @@ class VueRouter implements VueRouterContract
     {
         foreach ($original['model'] as $model) {
             $config = $this->modelConfig($model);
-            $vueRouter[] = [
+            $children[] = [
                 'path'  =>  $config['path'],
                 'name'  =>  $config['name'],
                 'component' =>  $original['component']
             ];
         }
-        return $vueRouter;
+        return $this->loadPackageConfig($children);
     }
     /**
      * [config 获取配置]
-     * @param  [type] $model [description]
      * @return [type]        [description]
      */
     protected function config()
@@ -66,5 +67,23 @@ class VueRouter implements VueRouterContract
     protected function modelConfig($model)
     {
         return config($this->package.'.model.'.$model);
+    }
+
+    /**
+     * [loadPackageConfig 加载项目相关配置]
+     * 增加模块 path 路径
+     * 增加模块 name 前端路由别名增加模块识别
+     * @return [type]        [description]
+     */
+    protected function loadPackageConfig($configs)
+    {
+        foreach ($configs as &$config) {
+            $config['path'] = config($this->package.'.uri').$config['path'];
+            $config['name'] = config($this->package.'.name').$config['name'];
+            if (array_key_exists('children', $config)) {
+                $config['children'] = $this->loadPackageConfig($config['children']);
+            }
+        }
+        return $configs;
     }
 }
