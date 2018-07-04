@@ -31,6 +31,10 @@ class ServiceProvider extends LaravelServiceProvider
         $this->loadRoutesFrom(__DIR__.'/Routes/web.php');
         //视图
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'core');
+        // 发布配置文件
+        $this->publishes([
+            __DIR__.'/Config/core.php' => config_path('core.php'),
+        ], 'core:config');
         //发布视图
         $this->publishes([
             __DIR__.'/../resources/views' => resource_path('views/vendor/core'),
