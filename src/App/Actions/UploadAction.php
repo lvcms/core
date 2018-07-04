@@ -21,10 +21,10 @@ class UploadAction
             abort(501, $validator->messages()->first());
         }else{
             return app()->call(UploadTask::class, [
-              $this->request->file->getRealPath(),
-              $this->request->file->getClientOriginalName(),
-              $this->request->file->getClientOriginalExtension(),
-              $this->request->type.DIRECTORY_SEPARATOR.$this->request->package
+                $this->request->file->getRealPath(),
+                $this->request->file->getClientOriginalName(),
+                $this->request->file->getClientOriginalExtension(),
+                $this->request->type.DIRECTORY_SEPARATOR.$this->request->package
             ], 'run');
         }
     }
