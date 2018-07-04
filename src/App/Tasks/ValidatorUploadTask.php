@@ -11,7 +11,7 @@ class ValidatorUploadTask
 {
     public function run($request)
     {
-        switch ($request->type) {
+        switch ($request->fileType) {
           case 'image':
             return $this->validator([
                     'file' => 'required|mimes:'.config('core.imageType'),
