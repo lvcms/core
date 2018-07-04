@@ -14,7 +14,7 @@ class ValidatorUploadTask
         switch ($request->type) {
           case 'image':
             return $this->validator([
-                    'file' => 'required|mimes:png,gif,jpg,jpeg,bmp',
+                    'file' => 'required|mimes:'.config('core.imageType'),
                 ],
                 [
                     'file.mimes' => '上传图片格式错误',
@@ -23,7 +23,7 @@ class ValidatorUploadTask
             break;
           case 'file':
             return $this->validator([
-                    'file' => 'required|mimes:doc,zip,rar',
+                    'file' => 'required|mimes:'.config('core.fileType'),
                 ],
                 [
                     'file.mimes' => '上传文件格式错误',
