@@ -46,7 +46,7 @@ class Sidebar implements SidebarContract
         $modelConfig = $this->modelConfig($model);
         return [
             'title' => $modelConfig['title'],
-            'name' => $modelConfig['name'],
+            'name' => config($this->package.'.name').':'.$modelConfig['name'],//增加模块名称
             'icon' => array_key_exists('icon', $modelConfig)? $modelConfig['icon']: null,
         ];
     }

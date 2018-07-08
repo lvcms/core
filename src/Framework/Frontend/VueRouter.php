@@ -78,8 +78,8 @@ class VueRouter implements VueRouterContract
     protected function loadPackageConfig($configs)
     {
         foreach ($configs as &$config) {
-            $config['path'] = config($this->package.'.uri').$config['path'];
-            $config['name'] = config($this->package.'.name').$config['name'];
+            $config['path'] = config($this->package.'.uri').'/'.$config['path'];
+            $config['name'] = config($this->package.'.name').':'.$config['name'];
             if (array_key_exists('children', $config)) {
                 $config['children'] = $this->loadPackageConfig($config['children']);
             }
