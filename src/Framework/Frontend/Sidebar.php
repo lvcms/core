@@ -26,12 +26,14 @@ class Sidebar implements SidebarContract
     public function handler($configs)
     {
         foreach ($configs as &$config) {
-            if (is_array($config['model'])) {
-                foreach ($config['model'] as $key => $model) {
-                  $config['children'][$key] = $this->handlerModel($model);
+            if (array_key_exists('model',$config)) {
+                if (is_array($config['model'])) {
+                    foreach ($config['model'] as $key => $model) {
+                        $config['children'][$key] = $this->handlerModel($model);
+                    }
+                }else{
+                    $config = $this->handlerModel($config['model']);
                 }
-            }else{
-                $config = $this->handlerModel($config['model']);
             }
         }
         return $configs;
