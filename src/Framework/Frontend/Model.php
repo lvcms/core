@@ -43,7 +43,24 @@ class Model implements ModelContract
 
     public function layout()
     {
-        return $this->config()['layout'];
+        return $this->layoutDefalutConfig($this->config()['layout']);
+    }
+    /** 
+     * 增加 layout 默认配置
+     * 自动加载 layout col 配置
+     * 自动加载 layout row 配置
+     */
+    private function layoutDefalutConfig($layouts)
+    {
+        foreach ($layouts as &$layout) {
+           if (!array_key_exists('config', $layout)) {
+               $layout['config'] = config($this->package.'.layout.'.$layout['style']);
+           }
+           if (array_key_exists('content', $layout)) {
+                $layout['content'] = $this->layoutDefalutConfig($layout['content']);
+           }
+        }
+        return $layouts;
     }
 
     public function item()
