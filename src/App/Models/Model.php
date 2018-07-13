@@ -88,10 +88,14 @@ trait Model
         $value = [];
         $valueAlias = $this->valueAlias;
         foreach ($this->item as $key => $item) {
-            $value[$key] = $this->componentJsonTypeChange(
-                $item['component'],
-                $this->where($this->keyAlias, '=', $key)->first()->$valueAlias
-            );
+            if ($query = $this->where($this->keyAlias, '=', $key)->first()) {
+                $value[$key] = $this->componentJsonTypeChange(
+                    $item['component'],
+                    $query->$valueAlias
+                );# code...
+            }else{
+                abort(501, '数据库未找到配置项 '.$key.' 请检查迁移文件是否配置');
+            }
         }
         return $value;
     }
