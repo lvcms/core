@@ -2,9 +2,9 @@
 
 namespace Laracore\Core\App\Actions;
 
-use Laracore\Core\App\Tasks\ModelAuthTask;
+use Laracore\Core\App\Tasks\AuthTask;
 
-class ModelAuthAction
+class AuthAction
 {
     /**
      * [protected 缓存时间]
@@ -14,6 +14,6 @@ class ModelAuthAction
 
     public function run($args)
     {
-        return app()->call(ModelAuthTask::class, [$args], 'run');
+        return app()->call(AuthTask::class, [$args], 'run');
     }
 }

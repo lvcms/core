@@ -7,6 +7,7 @@ use GraphQL\Type\Definition\Type;
 use GraphQL;
 
 use Laracore\Core\App\Actions\UpdateModelAction;
+use Laracore\Core\App\Actions\AuthAction;
 
 class UpdateModelMutation extends Mutation
 {
@@ -38,8 +39,10 @@ class UpdateModelMutation extends Mutation
         $args['value'] = json_decode($args['value']);
         return app()->call(UpdateModelAction::class, [$args], 'run');
     }
-    // public function authenticated($root, $args, $context)
-    // {
-    //     return JWTAuth::parseToken()->authenticate() ? true : false;
-    // }
+
+    public function authenticated($root, $args, $context)
+    {
+        return app()->call(AuthAction::class, [$args], 'run');
+    }
+
 }

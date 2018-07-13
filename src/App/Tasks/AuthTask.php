@@ -4,7 +4,7 @@ namespace Laracore\Core\App\Tasks;
 
 use Laracore\Core\Framework\Contracts\Frontend\Model;
 
-class ModelAuthTask
+class AuthTask
 {
     public function run($args)
     {
