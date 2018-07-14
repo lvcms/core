@@ -23,7 +23,7 @@ class UploadTableSeeder extends Seeder
             'sha1' 		=> '62f0309e8a6dbe349c57eeb2ba420bbcdf589302',
             'disk' 		=> 'public',
             'download' 	=> 0,
-            'status'  	=> 1,
+            'status'  	=> 'open',
             'sort' 	=> 0,
         ]);
     }
