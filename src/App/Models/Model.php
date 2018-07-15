@@ -1,7 +1,7 @@
 <?php
 
 namespace Laracore\Core\App\Models;
-
+use Laracore\Core\App\Actions\GetUploadAction;
 trait Model
 {
     protected $config;
@@ -122,6 +122,12 @@ trait Model
                 break;
             case 'switch':
                 return (Boolean)$value;
+                break;
+            case 'upload':
+                return [
+                    'id' => (Float)$value,
+                    'url' => app()->call(GetUploadAction::class, ['id',$value], 'run')->url,
+                ];
                 break;
             default:
                 return $value;
