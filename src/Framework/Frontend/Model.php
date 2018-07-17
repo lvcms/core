@@ -7,6 +7,7 @@ use Exception;
 use Illuminate\Support\Facades\Input;
 
 use Laracore\Core\Framework\Frontend\Model\Config;
+use Laracore\Core\Framework\Frontend\Model\Item;
 use Laracore\Core\Framework\Contracts\Frontend\Model as ModelContract;
 class Model implements ModelContract
 {
@@ -14,10 +15,12 @@ class Model implements ModelContract
     public $modelName;
     public $itemName;
     public $config;
+    public $item;
 
-    public function __construct(Config $configPro){
+    public function __construct(Config $configPro, Item $itemPro){
         $this->init();
         $this->config = $configPro->all();
+        $this->item = $itemPro;
     }
     /**
      * 初始化 input 数据源
@@ -43,13 +46,9 @@ class Model implements ModelContract
         return $this->config->get('item');
     }
 
-    public function model()
-    {
-        return app()->make($this->config()['model'])->setConfig($this->config());
-    }
-
     public function value()
     {
+        return $this->item->value();
         return $this->model()->setItem($this->item()[$this->itemName]['item'])->value();
     }
 

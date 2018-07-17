@@ -3,10 +3,10 @@
 namespace Laracore\Core\App\Actions;
 
 use Cache;
-use Laracore\Core\App\Tasks\GetModelLayoutTask;
+use Illuminate\Support\Facades\Input;
 use Laracore\Core\App\Tasks\ModelItemTask;
 use Laracore\Core\App\Tasks\ModelLayoutTask;
-use Illuminate\Support\Facades\Input;
+use Laracore\Core\App\Tasks\ModelValueTask;
 
 class ModelAction
 {
@@ -19,22 +19,11 @@ class ModelAction
     {
         $item = app()->make(ModelItemTask::class)->handle();
         $layout  = app()->make(ModelLayoutTask::class)->handle();
+        $value = app()->make(ModelValueTask::class)->handle();
         return [
             "layout" => $layout,
             "item" => $item,
-            // "value" => $value
+            "value" => $value
         ];
-        // dd(Input::get('variables'));
-        // // return Cache::remember(Input::get['variables.package'].":".Input::get['variables.model'], $this->minutes, function () use ($args) {
-        // //     return app()->call(GetModelLayoutTask::class, [$args], 'run');
-        // // });
-        // $layout  = app()->call(GetModelLayoutTask::class, [$args], 'run');
-        // $item = app()->call(GetModelItemTask::class, [$args], 'run');
-        // $value = array_key_exists('item', $args)? app()->call(GetModelValueTask::class, [$args], 'run'): null;
-        // return [
-        //     "layout" => $layout,
-        //     "item" => $item,
-        //     "value" => $value
-        // ];
     }
 }

@@ -19,10 +19,6 @@ interface Model
      */
     public function item();
     /**
-     * [model 获取模型类]
-     */
-    public function model();
-    /**
      * [value 获取数据]
      */
     public function value();
