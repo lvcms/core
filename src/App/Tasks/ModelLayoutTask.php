@@ -4,10 +4,10 @@ namespace Laracore\Core\App\Tasks;
 
 use Laracore\Core\Framework\Contracts\Frontend\Model;
 
-class AuthTask
+class ModelLayoutTask
 {
     public function handle()
     {
-        return app()->make(Model::class)->authenticated();
+        return app()->make(Model::class)->layout();
     }
 }

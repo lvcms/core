@@ -4,68 +4,43 @@ namespace Laracore\Core\Framework\Frontend;
 
 use JWTAuth;
 use Exception;
-use Laracore\Core\Framework\Contracts\Frontend\Model as ModelContract;
+use Illuminate\Support\Facades\Input;
 
+use Laracore\Core\Framework\Frontend\Model\Config;
+use Laracore\Core\Framework\Contracts\Frontend\Model as ModelContract;
 class Model implements ModelContract
 {
-    protected $package;
-    protected $modelName;
-    protected $itemName;
+    public $package;
+    public $modelName;
+    public $itemName;
+    public $config;
 
-
-    public function setPackage($package)
-    {
-        $this->package = $package;
-        return $this;
+    public function __construct(Config $configPro){
+        $this->init();
+        $this->config = $configPro->all();
     }
-
-    public function setModel($model)
+    /**
+     * 初始化 input 数据源
+     */
+    public function init()
     {
-        $this->modelName = $model;
-        return $this;
+        $this->package = Input::get('variables.package');
+        $this->modelName = Input::get('variables.model');
+        $this->itemName = Input::get('variables.item');
     }
-
-    public function setItemName($itemName)
-    {
-        $this->itemName = $itemName;
-        return $this;
-    }
-
     public function config()
     {
-        return config($this->package.'.model.'.$this->modelName);
-    }
-    
-    public function configAuth()
-    {
-        return isset($this->config()['auth'])? $this->config()['auth']: true;
+        return $this->config;
     }
 
     public function layout()
     {
-        return $this->layoutDefalutConfig($this->config()['layout']);
-    }
-    /** 
-     * 增加 layout 默认配置
-     * 自动加载 layout col 配置
-     * 自动加载 layout row 配置
-     */
-    private function layoutDefalutConfig($layouts)
-    {
-        foreach ($layouts as &$layout) {
-           if (!array_key_exists('config', $layout)) {
-               $layout['config'] = config($this->package.'.layout.'.$layout['style']);
-           }
-           if (array_key_exists('content', $layout)) {
-                $layout['content'] = $this->layoutDefalutConfig($layout['content']);
-           }
-        }
-        return $layouts;
+        return $this->config->get('layout');
     }
 
     public function item()
     {
-        return $this->config()['item'];
+        return $this->config->get('item');
     }
 
     public function model()
@@ -85,7 +60,7 @@ class Model implements ModelContract
 
     public function authenticated()
     {
-        if ($this->configAuth()) {
+        if ($this->config->get('auth')) {
           try {
               return JWTAuth::parseToken()->authenticate() ? true : false;
           } catch (Exception $e) {

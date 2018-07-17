@@ -8,9 +8,9 @@ class UpdateModelTask
 {
     public function run($args)
     {
-      return app()->make(Model::class)
-              ->setPackage($args['package'])
-              ->setModel($args['model'])
-              ->update($args['value']);
+    //   return app()->make(Model::class)
+    //           ->setPackage($args['package'])
+    //           ->setModel($args['model'])
+    //           ->update($args['value']);
     }
 }

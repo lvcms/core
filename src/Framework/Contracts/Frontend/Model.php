@@ -5,30 +5,10 @@ namespace Laracore\Core\Framework\Contracts\Frontend;
 interface Model
 {
     /**
-     * [setPackage 设置扩展包]
-     * @param [type] $package [description]
-     */
-    public function setPackage($package);
-    /**
-     * [setModel 设置操作模型]
-     * @param [type] $model [description]
-     */
-    public function setModel($model);
-    /**
-     * [setItemName 设置项目名称]
-     * @param [type] $itemName [description]
-     */
-    public function setItemName($itemName);
-    /**
      * [config  读取对应模型配置]
      * @return [type] [description]
      */
     public function config();
-    /**
-     * [configAuth  获取是否允需要用户认证]
-     * @return [type] [description]
-     */
-    public function configAuth();
     /**
      * [layout 获取模型 Layout 布局]
      * @return [type] [description]

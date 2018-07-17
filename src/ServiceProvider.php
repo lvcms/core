@@ -80,8 +80,6 @@ class ServiceProvider extends LaravelServiceProvider
         $this->app->bind(SidebarContract::class, function () {
             return new Sidebar();
         });
-        $this->app->bind(ModelContract::class, function () {
-            return new Model();
-        });
+        $this->app->bind(ModelContract::class, Model::class);
     }
 }

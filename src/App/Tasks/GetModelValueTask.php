@@ -8,10 +8,10 @@ class GetModelValueTask
 {
     public function run($args)
     {
-        return app()->make(Model::class)
-                ->setPackage($args['package'])
-                ->setModel($args['model'])
-                ->setItemName($args['item'])
-                ->value();
+        // return app()->make(Model::class)
+        //         ->setPackage($args['package'])
+        //         ->setModel($args['model'])
+        //         ->setItemName($args['item'])
+        //         ->value();
     }
 }

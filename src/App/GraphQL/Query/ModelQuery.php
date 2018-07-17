@@ -7,9 +7,8 @@ use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 use GraphQL;
 
-use Laracore\Core\App\Actions\ModelQueryAction;
+use Laracore\Core\App\Actions\ModelAction;
 use Laracore\Core\App\Actions\AuthAction;
-
 class ModelQuery extends Query
 {
     protected $attributes = [
@@ -33,11 +32,11 @@ class ModelQuery extends Query
 
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
-        return app()->call(ModelQueryAction::class, [$args], 'run');
+        return app()->make(ModelAction::class)->handle();
     }
 
-    public function authenticated($root, $args, $context)
-    {
-        return app()->call(AuthAction::class, [$args], 'run');
-    }
+    // public function authenticated($root, $args, $context)
+    // {
+    //     return app()->make(AuthAction::class)->handle();
+    // }
 }

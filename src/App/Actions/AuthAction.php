@@ -6,14 +6,8 @@ use Laracore\Core\App\Tasks\AuthTask;
 
 class AuthAction
 {
-    /**
-     * [protected 缓存时间]
-     * @var [type]
-     */
-    protected $minutes = 120;
-
-    public function run($args)
+    public function handle()
     {
-        return app()->call(AuthTask::class, [$args], 'run');
+        return app()->make(AuthTask::class)->handle();
     }
 }
