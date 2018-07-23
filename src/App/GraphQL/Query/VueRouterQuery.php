@@ -30,6 +30,6 @@ class VueRouterQuery extends Query
 
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
-        return app()->call(VueRouterAction::class, [$args], 'run');
+        return app()->make(VueRouterAction::class)->handler();
     }
 }

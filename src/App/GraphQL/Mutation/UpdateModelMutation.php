@@ -32,12 +32,12 @@ class UpdateModelMutation extends Mutation
 
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
-        return app()->make(UpdateModelAction::class)->handle();
+        return app()->make(UpdateModelAction::class)->handler();
     }
 
     public function authenticated($root, $args, $context)
     {
-        return app()->make(AuthAction::class)->handle();
+        return app()->make(AuthAction::class)->handler();
     }
 
 }

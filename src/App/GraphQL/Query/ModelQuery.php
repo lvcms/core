@@ -32,11 +32,11 @@ class ModelQuery extends Query
 
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
-        return app()->make(ModelAction::class)->handle();
+        return app()->make(ModelAction::class)->handler();
     }
 
     public function authenticated($root, $args, $context)
     {
-        return app()->make(AuthAction::class)->handle();
+        return app()->make(AuthAction::class)->handler();
     }
 }

@@ -3,7 +3,7 @@
 namespace Laracore\Core\App\Actions;
 
 use Cache;
-use Laracore\Core\App\Tasks\GetVueRouterTask;
+use Laracore\Core\App\Tasks\VueRouterTask;
 
 class VueRouterAction
 {
@@ -13,9 +13,9 @@ class VueRouterAction
      */
     protected $minutes = 120;
 
-    public function run($args)
+    public function handler()
     {
-        return app()->call(GetVueRouterTask::class, [$args], 'run');
+        return app()->make(VueRouterTask::class)->handler();
         // return Cache::remember('VueRouter:'.$args['package'], $this->minutes, function () use ($args) {
         //     return app()->call(GetVueRouterTask::class, [$args], 'run');
         // });

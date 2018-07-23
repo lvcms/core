@@ -10,9 +10,6 @@ interface VueRouter
      * @param  string  $model
      * @return mixed
      */
-    public function get($model);
-    /**
-     * 处理对应配置数据
-     */
-    public function handler($configs);
+    public function handler();
+
 }

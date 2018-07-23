@@ -2,34 +2,27 @@
 
 namespace Laracore\Core\Framework\Frontend;
 
+use Illuminate\Support\Facades\Input;
 use Laracore\Core\Framework\Contracts\Frontend\VueRouter as VueRouterContract;
 
 class VueRouter implements VueRouterContract
 {
     protected $package;
-    /**
-     * 根据 package 获取对应 vueRouter
-     *
-     * @param  string  $package
-     * @return mixed
-     */
-    public function get($package)
-    {
-        $this->package = $package;
-        return $this->handler(
-            $this->loadPackageConfig($this->config())
-        );
+
+    public function __construct(){
+        $this->package = Input::get('variables.package');
     }
     /**
      * [handler 处理配置信息编译成前端路由]
      * @param  [type] $config [description]
      * @return [type]         [description]
      */
-    public function handler($configs)
+    public function handler()
     {
-        $vueRouter = collect($configs)->map(function ($config) {
+        $vueRouter = $this->loadPackageConfig($this->config())->map(function ($config) {
             if (array_key_exists('originalChildren', $config)) {
-                $config['children'] = array_merge($config['children'], $this->handlerModel($config['originalChildren']));
+                // 处理模块数据
+                $config['children'] = $this->handlerModel($config['originalChildren'])->merge($config['children']);
             }
             return $config;
         });
@@ -84,6 +77,6 @@ class VueRouter implements VueRouterContract
                 $config['children'] = $this->loadPackageConfig($config['children']);
             }
         }
-        return $configs;
+        return collect($configs);
     }
 }

@@ -15,11 +15,11 @@ class ModelAction
      * @var [type]
      */
     protected $minutes = 120;
-    public function handle()
+    public function handler()
     {
-        $item = app()->make(ModelItemTask::class)->handle();
-        $layout  = app()->make(ModelLayoutTask::class)->handle();
-        $value = app()->make(ModelValueTask::class)->handle();
+        $item = app()->make(ModelItemTask::class)->handler();
+        $layout  = app()->make(ModelLayoutTask::class)->handler();
+        $value = app()->make(ModelValueTask::class)->handler();
         return [
             "layout" => $layout,
             "item" => $item,
