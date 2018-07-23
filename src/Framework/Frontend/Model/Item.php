@@ -162,12 +162,7 @@ class Item
     {
         try {
             foreach ($value as $key => $val) {
-                if (is_array($val)) {
-                    $val = json_encode($val);
-                }
-                // if($key == 'WEB_SITE_LOGO'){
-                //     $val = $val->id;
-                // }
+                $val = $this->upadteHeadHandler($key,$val);
                 $this->model->where($this->keyAlias, '=', $key)->update([$this->valueAlias => $val]);
             }
         } catch (Exception $e) {
@@ -178,5 +173,29 @@ class Item
             'message' => '数据更新成功',
             'value' => $value
         ];
+    }
+    /**
+     * [upadteHeadHandler 更新前数据处理]
+     */
+    public function upadteHeadHandler($key,$value)
+    {
+        foreach ($this->itmeLayout as $name => $itme) {
+            if ($key == $name) {
+                switch ($itme['component']) {
+                    case 'checkbox':
+                        return json_encode($value);
+                        break;
+                    case 'select':
+                        return json_encode($value);
+                        break;
+                    case 'upload':
+                        return $value->id;
+                        break;
+                    default:
+                        return $value;
+                        break;
+                }
+            }
+        }
     }
 }
