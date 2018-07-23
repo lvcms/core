@@ -36,7 +36,7 @@ class Config
      */
     public function auth()
     {
-        return (array_key_exists('auth', $this->config))? $this->config->get('auth'): true;
+        return $this->config->has('auth')? $this->config->get('auth'): true;
     }
     /**
      * 获取 layout 默认配置
