@@ -49,7 +49,6 @@ class Model implements ModelContract
     public function value()
     {
         return $this->item->value();
-        return $this->model()->setItem($this->item()[$this->itemName]['item'])->value();
     }
 
     public function update($values)

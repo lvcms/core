@@ -13,6 +13,7 @@ class Item
     public $itemName;
     public $keyAlias;
     public $valueAlias;
+    public $handlerFormRequest;
     public $uploadModel;
     public $config;
     public $model; //实例化对应模型
@@ -34,9 +35,15 @@ class Item
         $this->itemName = Input::get('variables.item');
         $this->keyAlias = $this->config->has('key')? $this->config['keyValueAlias']['key']: 'key';
         $this->valueAlias = $this->config->has('value')? $this->config['keyValueAlias']['value']: 'value';
+        $this->handlerFormRequest = $this->config->has('handlerFormRequest')?$this->config['handlerFormRequest']: null;
 
         $this->instantiation();
-        $this->itemLayout();
+        /**
+         * 防止没有传入项目名称 （一般获取布局时）报错
+         */
+        if($this->itemName){
+            $this->itemLayout();
+        }
     }
     /**
      * 实例化 model 模型
@@ -58,7 +65,11 @@ class Item
      */
     public function value()
     {
-        return $this->getKeyValue();
+        try{
+            return $this->getKeyValue();
+        }catch(\Exception $e){
+            return;
+        }
     }
         /**
      * [getKeyValue 根据 key 获取 value]
@@ -66,16 +77,14 @@ class Item
      */
     public function getKeyValue()
     {
-        $value = [];
-        $valueAlias = $this->valueAlias;
         foreach ($this->itmeLayout as $key => $item) {
             if ($query = $this->model->where($this->keyAlias, '=', $key)->first()) {
                 $value[$key] = $this->componentJsonTypeChange(
                     $item['component'],
-                    $query->$valueAlias
+                    $query->{$this->valueAlias}
                 );# code...
             }else{
-                abort(501, '数据库未找到配置项 '.$key.' 请检查迁移文件是否配置');
+                abort(501, '数据库未找到配置项 '.$key.' 请修改 config 配置文件取消此配置项!');
             }
         }
         return $value;
@@ -115,5 +124,45 @@ class Item
                 break;
         }
     }
-
+    /**
+     * [handlerFormRequest 更新数据]
+     * @param  [type] $values [description]
+     * @return [type]         [description]
+     */
+    public function handlerFormRequest($values)
+    {
+        if (method_exists($this, $this->handlerFormRequest)) {
+            // 自定义方法处理
+            return $this->{$this->handlerFormRequest}($values);
+        } else {
+            if (empty($values->id)) {
+                return $this->updateKeyValue($values);
+            } else {
+                return '';
+            }
+        }
+    }
+    /**
+     * [updateKeyValue 更新 key 数据]
+     * @param  [type] $values [description]
+     * @return [type]         [description]
+     */
+    public function updateKeyValue($values)
+    {
+        try {
+            foreach ($values as $key => $value) {
+                if (is_array($value)) {
+                    $value = json_encode($value);
+                }
+                $this->where($this->keyAlias, '=', $key)->update([$this->valueAlias => $value]);
+            }
+        } catch (Exception $e) {
+            abort(501, '数据更新失败');
+        }
+        return [
+            'status' => 200,
+            'message' => '数据更新成功',
+            'value' => $values
+        ];
+    }
 }
