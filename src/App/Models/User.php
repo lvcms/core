@@ -7,11 +7,10 @@ use JWTAuth;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Laracore\Core\App\Models\Model as LaracoreModel;
 
 class User extends Authenticatable implements JWTSubject
 {
-    use Notifiable, LaracoreModel;
+    use Notifiable;
 
     public $table = 'core_users';
     /**

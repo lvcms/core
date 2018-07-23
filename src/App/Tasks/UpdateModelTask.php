@@ -6,11 +6,8 @@ use Laracore\Core\Framework\Contracts\Frontend\Model;
 
 class UpdateModelTask
 {
-    public function run($args)
+    public function handle()
     {
-    //   return app()->make(Model::class)
-    //           ->setPackage($args['package'])
-    //           ->setModel($args['model'])
-    //           ->update($args['value']);
+        return app()->make(Model::class)->update();
     }
 }

@@ -24,10 +24,9 @@ interface Model
     public function value();
     /**
      * [update 更新数据]
-     * @param  [type] $values [description]
      * @return [type]         [description]
      */
-    public function update($values);
+    public function update();
     /**
      * [authenticated 用户认证]
      * @return [type]         [description]

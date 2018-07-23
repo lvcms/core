@@ -51,9 +51,9 @@ class Model implements ModelContract
         return $this->item->value();
     }
 
-    public function update($values)
+    public function update()
     {
-        return $this->model()->handlerFormRequest($values);
+        return $this->item->update();
     }
 
     public function authenticated()

@@ -32,17 +32,12 @@ class UpdateModelMutation extends Mutation
 
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
-        /**
-         * [$args 解析 itemValue json 为数组对象]
-         * @var [type]
-         */
-        $args['value'] = json_decode($args['value']);
-        return app()->call(UpdateModelAction::class, [$args], 'run');
+        return app()->make(UpdateModelAction::class)->handle();
     }
 
     public function authenticated($root, $args, $context)
     {
-        return app()->call(AuthAction::class, [$args], 'run');
+        return app()->make(AuthAction::class)->handle();
     }
 
 }

@@ -5,8 +5,8 @@ namespace Laracore\Core\App\Actions;
 use Laracore\Core\App\Tasks\UpdateModelTask;
 class UpdateModelAction
 {
-    public function run($args)
+    public function handle()
     {
-        return app()->call(UpdateModelTask::class, [$args], 'run');
+        return app()->make(UpdateModelTask::class)->handle();
     }
 }

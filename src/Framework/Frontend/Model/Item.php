@@ -11,6 +11,7 @@ class Item
     public $package;
     public $modelName;
     public $itemName;
+    public $value;
     public $keyAlias;
     public $valueAlias;
     public $handlerFormRequest;
@@ -33,6 +34,7 @@ class Item
         $this->package = Input::get('variables.package');
         $this->modelName = Input::get('variables.model');
         $this->itemName = Input::get('variables.item');
+        $this->value = json_decode(Input::get('variables.value'));
         $this->keyAlias = $this->config->has('key')? $this->config['keyValueAlias']['key']: 'key';
         $this->valueAlias = $this->config->has('value')? $this->config['keyValueAlias']['value']: 'value';
         $this->handlerFormRequest = $this->config->has('handlerFormRequest')?$this->config['handlerFormRequest']: null;
@@ -71,7 +73,16 @@ class Item
             return;
         }
     }
-        /**
+
+    /**
+     * [value 更新数据]
+     * @return [type] [description]
+     */
+    public function update()
+    {
+        return $this->handlerFormRequest($this->value);
+    }
+    /**
      * [getKeyValue 根据 key 获取 value]
      * @return [type]              [description]
      */
@@ -129,14 +140,14 @@ class Item
      * @param  [type] $values [description]
      * @return [type]         [description]
      */
-    public function handlerFormRequest($values)
+    public function handlerFormRequest($value)
     {
-        if (method_exists($this, $this->handlerFormRequest)) {
+        if (method_exists($this->model, $this->handlerFormRequest)) {
             // 自定义方法处理
-            return $this->{$this->handlerFormRequest}($values);
+            return $this->model->{$this->handlerFormRequest}($value);
         } else {
             if (empty($values->id)) {
-                return $this->updateKeyValue($values);
+                return $this->updateKeyValue($value);
             } else {
                 return '';
             }
@@ -147,14 +158,17 @@ class Item
      * @param  [type] $values [description]
      * @return [type]         [description]
      */
-    public function updateKeyValue($values)
+    public function updateKeyValue($value)
     {
         try {
-            foreach ($values as $key => $value) {
-                if (is_array($value)) {
-                    $value = json_encode($value);
+            foreach ($value as $key => $val) {
+                if (is_array($val)) {
+                    $val = json_encode($val);
                 }
-                $this->where($this->keyAlias, '=', $key)->update([$this->valueAlias => $value]);
+                // if($key == 'WEB_SITE_LOGO'){
+                //     $val = $val->id;
+                // }
+                $this->model->where($this->keyAlias, '=', $key)->update([$this->valueAlias => $val]);
             }
         } catch (Exception $e) {
             abort(501, '数据更新失败');
@@ -162,7 +176,7 @@ class Item
         return [
             'status' => 200,
             'message' => '数据更新成功',
-            'value' => $values
+            'value' => $value
         ];
     }
 }

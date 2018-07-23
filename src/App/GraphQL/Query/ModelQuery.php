@@ -35,8 +35,8 @@ class ModelQuery extends Query
         return app()->make(ModelAction::class)->handle();
     }
 
-    // public function authenticated($root, $args, $context)
-    // {
-    //     return app()->make(AuthAction::class)->handle();
-    // }
+    public function authenticated($root, $args, $context)
+    {
+        return app()->make(AuthAction::class)->handle();
+    }
 }
