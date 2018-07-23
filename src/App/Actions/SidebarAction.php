@@ -3,7 +3,7 @@
 namespace Laracore\Core\App\Actions;
 
 use Cache;
-use Laracore\Core\App\Tasks\GetSidebarTask;
+use Laracore\Core\App\Tasks\SidebarTask;
 
 class SidebarAction
 {
@@ -13,9 +13,9 @@ class SidebarAction
      */
     protected $minutes = 120;
 
-    public function run($args)
+    public function handler()
     {
-        return app()->call(GetSidebarTask::class, [$args], 'run');
+        return app()->make(SidebarTask::class)->handler();
         // return Cache::remember('Sidebar:'.$args['package'], $this->minutes, function () use ($args) {
         //     return app()->call(GetSidebarTask::class, [$args], 'run');
         // });

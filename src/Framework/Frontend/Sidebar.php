@@ -2,29 +2,24 @@
 
 namespace Laracore\Core\Framework\Frontend;
 
+use Illuminate\Support\Facades\Input;
 use Laracore\Core\Framework\Contracts\Frontend\Sidebar as SidebarContract;
 
 class Sidebar implements SidebarContract
 {
     protected $package;
-    /**
-     * 根据 package 获取对应 vueRouter
-     *
-     * @param  string  $package
-     * @return mixed
-     */
-    public function get($package)
-    {
-        $this->package = $package;
-        return $this->handler($this->config());
+
+    public function __construct(){
+        $this->package = Input::get('variables.package');
     }
     /**
      * [handler 处理配置信息编译成前端路由]
      * @param  [type] $config [description]
      * @return [type]         [description]
      */
-    public function handler($configs)
-    {
+    public function handler()
+    {   
+        $configs = $this->config();
         foreach ($configs as &$config) {
             if (array_key_exists('model',$config)) {
                 if (is_array($config['model'])) {

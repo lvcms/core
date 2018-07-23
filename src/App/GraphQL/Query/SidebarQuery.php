@@ -3,11 +3,10 @@
 namespace Laracore\Core\App\GraphQL\Query;
 
 use JWTAuth;
+use GraphQL;
 use Folklore\GraphQL\Support\Query;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
-use GraphQL;
-
 use Laracore\Core\App\Actions\SidebarAction;
 
 class SidebarQuery extends Query
@@ -31,6 +30,6 @@ class SidebarQuery extends Query
 
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
-        return app()->call(SidebarAction::class, [$args], 'run');
+        return app()->make(SidebarAction::class)->handler();
     }
 }
