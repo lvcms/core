@@ -56,7 +56,7 @@ class Config
         foreach ($layouts as &$layout) {
             //没有自定义配置时加载默认配置 仅支持 col row 设定其他 style 会报错
            if (!array_key_exists('config', $layout)) {
-               $layout['config'] = config($this->package.'.layout.'.$layout['style']);
+               $layout['config'] = config('core.layout.'.$layout['style']);
            }
            if (array_key_exists('content', $layout)) {
                 $layout['content'] = $this->layoutDefalutConfig($layout['content']);
