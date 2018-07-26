@@ -2,7 +2,6 @@
 
 namespace Laracore\Core\App\Models;
 
-use Auth;
 use JWTAuth;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
@@ -45,7 +44,9 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
-
+    /**
+     * 设置密码默认自动通过 bcrypt 加密存储
+     */
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
@@ -60,7 +61,9 @@ class User extends Authenticatable implements JWTSubject
                     ->orwhere('mobile', $username)
                     ->first();
     }
-
+    /**
+     * 通过 JWTAuth 获取 token
+     */
     public function attemptToken($credentials)
     {
         if ($token = JWTAuth::attempt(['email' => $credentials->username, 'password' => $credentials->password])) {
@@ -71,27 +74,5 @@ class User extends Authenticatable implements JWTSubject
             return $token;
         }
         return null;
-    }
-
-    public function login($credentials)
-    {
-        if ($token = $this->attemptToken($credentials)) {
-            $user = Auth::user();
-            return [
-                'status' => 200,
-                'message' => '登录成功',
-                'value' => [
-                    'token' => $token,
-                    'redirect' => '/admin',
-                    'user' => [
-                        'id' => $user->id,
-                        'name' => $user->name,
-                        'email' => $user->email,
-                    ]
-                ]
-            ];
-        } else {
-            abort(401.1, '登录失败');
-        }
     }
 }
