@@ -41,7 +41,7 @@ class Common extends ScalarType implements TypeConvertible
      */
     public function parseLiteral($ast)
     {
-        return null;
+        return $ast;
     }
 
     /**
