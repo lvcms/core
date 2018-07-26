@@ -12,6 +12,6 @@ class UploadController extends Controller
      */
     public function index()
     {
-      return app()->call(UploadAction::class, [],'run');
+      return app()->make(UploadAction::class)->handler();
     }
 }

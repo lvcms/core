@@ -9,12 +9,12 @@ use Illuminate\Support\Facades\Validator;
  */
 class ValidatorUploadTask
 {
-    public function run($request)
+    public function handler()
     {
-        switch ($request->fileType) {
+        switch (Input::get('fileType')) {
           case 'image':
             return $this->validator([
-                    'file' => 'required|mimes:'.config('core.imageType'),
+                    'file' => 'required|mimes:'.config('core.upload.format.image'),
                 ],
                 [
                     'file.mimes' => '上传图片格式错误',
@@ -23,7 +23,7 @@ class ValidatorUploadTask
             break;
           case 'file':
             return $this->validator([
-                    'file' => 'required|mimes:'.config('core.fileType'),
+                    'file' => 'required|mimes:'.config('core.upload.format.file'),
                 ],
                 [
                     'file.mimes' => '上传文件格式错误',

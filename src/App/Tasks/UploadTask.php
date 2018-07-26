@@ -3,35 +3,40 @@
 namespace Laracore\Core\App\Tasks;
 
 use Storage;
+use Illuminate\Http\Request;
 use Laracore\Core\App\Models\Upload;
 
 class UploadTask
 {
     private $uploadModel;
+    private $request;
     private $uid = 1;
     private $fileInfo;
     private $fileData;
-    private $cachePath;
-    private $name;
-    private $extension;
-    private $path;
+    private $cachePath; // 文件路径
+    private $name; // 文件名称
+    private $extension; // 文件格式 扩展名称
+    private $path; // 文件存储路径
     private $md5;
     private $sha1;
     private $size;
     private $disk;
     private $object;
 
-    public function __construct(Upload $uploadPro)
+    public function __construct(Upload $uploadPro, Request $request)
     {
         $this->uploadModel = $uploadPro;
+        $this->request = $request;
+        $this->cachePath = $this->request->file->getRealPath();
+        $this->name = $this->request->file->getClientOriginalName();
+        $this->extension = $this->request->file->getClientOriginalExtension();
+        $this->path = DIRECTORY_SEPARATOR.$this->request->fileType.DIRECTORY_SEPARATOR.$this->request->package;
     }
-
-    public function run($cachePath, $name, $extension, $path)
+    /**
+     * 上传处理器
+     */
+    public function handler()
     {
-        $this->cachePath = $cachePath;
-        $this->name = $name;
-        $this->extension = $extension;
-        $this->path = $path;
         $this->initFile();
         $this->object = $this->checkFile();
         //检查文件如果文件存在数据库直接返回
