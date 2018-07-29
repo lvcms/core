@@ -130,6 +130,9 @@ class Item
                     'url' => $this->uploadModel->where('id', $value)->first()->url
                 ];
                 break;
+            case 'table':
+                return json_decode($value);
+                break;
             default:
                 return $value;
                 break;
