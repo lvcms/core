@@ -70,7 +70,7 @@ class Item
         try{
             return $this->getKeyValue();
         }catch(\Exception $e){
-            return;
+            return $e;
         }
     }
 
@@ -89,13 +89,15 @@ class Item
     public function getKeyValue()
     {
         foreach ($this->itmeLayout as $key => $item) {
-            if ($query = $this->model->where($this->keyAlias, '=', $key)->first()) {
-                $value[$key] = $this->componentJsonTypeChange(
-                    $item['component'],
-                    $query->{$this->valueAlias}
-                );# code...
-            }else{
-                abort(501, '数据库未找到配置项 '.$key.' 请修改 config 配置文件取消此配置项!');
+            if ($item['isValue']) {
+                if ($query = $this->model->where($this->keyAlias, '=', $key)->first()) {
+                    $value[$key] = $this->componentJsonTypeChange(
+                        $item['component'],
+                        $query->{$this->valueAlias}
+                    );# code...
+                }else{
+                    abort(501, '数据库未找到配置项 '.$key.' 请修改 config 配置文件取消此配置项!');
+                }
             }
         }
         return $value;
