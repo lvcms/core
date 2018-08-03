@@ -67,6 +67,8 @@ class Config
      */
     private function renderComponent($component)
     {
+        // 增加默认允许获取 value 属性
+        $component['isValue'] = array_key_exists('isValue',$component)? $component['isValue']: true;
         switch ($component['component']) {
             case 'upload':
                 $configUpload = config('core.upload');
