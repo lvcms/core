@@ -67,8 +67,13 @@ class Config
      */
     private function renderComponent($component)
     {
+        
         // 增加默认允许获取 value 属性
         $component['isValue'] = array_key_exists('isValue',$component)? $component['isValue']: true;
+        // 使用自定义 component model 获取数据额皮质 如果没有 使用 model 配置文件配置获取方式 如果无设置默认使用 id
+        $component['modelType'] = array_key_exists('modelType',$component)? $component['modelType']: (
+            $this->config->has('modelType')? $this->config->get('modelType'):'id'
+        );
         switch ($component['component']) {
             case 'upload':
                 $configUpload = config('core.upload');

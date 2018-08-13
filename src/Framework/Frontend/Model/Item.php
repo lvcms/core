@@ -14,7 +14,7 @@ class Item
     public $value;
     public $keyAlias;
     public $valueAlias;
-    public $handlerFormRequest;
+    public $handlerFormRequest; // 自定义处理 form 提交数据方法名称
     public $uploadModel;
     public $config;
     public $model; //实例化对应模型
@@ -68,7 +68,19 @@ class Item
     public function value()
     {
         try{
-            return $this->getKeyValue();
+            foreach ($this->itmeLayout as $key => $item) {
+                if ($item['isValue']) {
+                    switch ($item['modelType']) {
+                        case 'key':
+                            $value[$key] = $this->getKeyValue($key,$item);
+                            break;
+                        case 'id':
+                            $value[$key] = $this->getIdValue();
+                            break;
+                    }
+                }
+            }
+            return $value;
         }catch(\Exception $e){
             return $e;
         }
@@ -83,24 +95,28 @@ class Item
         return $this->handlerFormRequest($this->value);
     }
     /**
+     * [getIdValue 根据 id 获取 value]
+     * @return [type]              [description]
+     */
+    public function getIdValue()
+    {
+        return $this->model->all();
+    }
+    /**
      * [getKeyValue 根据 key 获取 value]
      * @return [type]              [description]
      */
-    public function getKeyValue()
+    public function getKeyValue($key,$item)
     {
-        foreach ($this->itmeLayout as $key => $item) {
-            if ($item['isValue']) {
-                if ($query = $this->model->where($this->keyAlias, '=', $key)->first()) {
-                    $value[$key] = $this->componentJsonTypeChange(
-                        $item['component'],
-                        $query->{$this->valueAlias}
-                    );# code...
-                }else{
-                    abort(501, '数据库未找到配置项 '.$key.' 请修改 config 配置文件取消此配置项!');
-                }
-            }
+        if ($query = $this->model->where($this->keyAlias, '=', $key)->first()) 
+        {
+            return $this->componentJsonTypeChange(
+                $item['component'],
+                $query->{$this->valueAlias}
+            );# code...
+        }else{
+             abort(501, '数据库未找到配置项 '.$key.' 请修改 config 配置文件取消此配置项!');
         }
-        return $value;
     }
     /**
      * [componentJsonTypeChange 根据使用组件转换对应数据类型]
