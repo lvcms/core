@@ -45,6 +45,11 @@
         "branch-alias": {
             "dev-master": "1.0-dev"
         },
+        "laravel": {
+            "providers": [
+                "Lvcmf\\Core\\ServiceProvider"
+            ]
+        },
         "lvcmf": {
             "name": "core",
             "title": "lvcmf 核心系统",
@@ -52,7 +57,7 @@
             "author": "BigRocs",
             "version": "1.0.1",
             "providers": [
-                "Lvcmf\\Core\\CoreServiceProvider"
+                "Lvcmf\\Core\\ServiceProvider"
             ],
             "install": "lvcmf:core:install",
             "uninstall": "lvcmf:core:uninstall"
