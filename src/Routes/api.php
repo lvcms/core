@@ -10,6 +10,6 @@
 |
 */
 
-Route::group(['prefix' => 'api', 'middleware' => 'api', 'namespace' => 'Laracore\Core\App\Http\Controllers\Api', 'as' => 'api.'], function () {
+Route::group(['prefix' => 'api', 'middleware' => 'api', 'namespace' => 'Lvcmf\Core\App\Http\Controllers\Api', 'as' => 'api.'], function () {
     Route::post('upload', ['as' => 'upload', 'uses' => 'UploadController@index']);
 });

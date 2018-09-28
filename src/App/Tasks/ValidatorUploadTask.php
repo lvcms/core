@@ -1,6 +1,6 @@
 <?php
 
-namespace Laracore\Core\App\Tasks;
+namespace Lvcmf\Core\App\Tasks;
 
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;

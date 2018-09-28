@@ -1,10 +1,10 @@
 <?php
 
-namespace Laracore\Core\Framework\Frontend\Model;
+namespace Lvcmf\Core\Framework\Frontend\Model;
 
 use Illuminate\Support\Facades\Input;
-use Laracore\Core\App\Models\Upload;
-use Laracore\Core\Framework\Frontend\Model\Config;
+use Lvcmf\Core\App\Models\Upload;
+use Lvcmf\Core\Framework\Frontend\Model\Config;
 
 class Item
 {

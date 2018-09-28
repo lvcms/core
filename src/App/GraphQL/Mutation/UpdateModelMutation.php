@@ -1,13 +1,13 @@
 <?php
-namespace Laracore\Core\App\GraphQL\Mutation;
+namespace Lvcmf\Core\App\GraphQL\Mutation;
 
 use Folklore\GraphQL\Support\Mutation;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 use GraphQL;
 
-use Laracore\Core\App\Actions\UpdateModelAction;
-use Laracore\Core\App\Actions\AuthAction;
+use Lvcmf\Core\App\Actions\UpdateModelAction;
+use Lvcmf\Core\App\Actions\AuthAction;
 
 class UpdateModelMutation extends Mutation
 {

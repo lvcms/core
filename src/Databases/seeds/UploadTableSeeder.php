@@ -1,5 +1,5 @@
 <?php
-namespace Laracore\Core\Databases\seeds;
+namespace Lvcmf\Core\Databases\seeds;
 
 use DB;
 use Illuminate\Database\Seeder;

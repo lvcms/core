@@ -1,9 +1,9 @@
 <?php
 
-namespace Laracore\Core\App\Http\Controllers\Api;
+namespace Lvcmf\Core\App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Laracore\Core\App\Actions\UploadAction;
+use Lvcmf\Core\App\Actions\UploadAction;
 
 class UploadController extends Controller
 {

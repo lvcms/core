@@ -1,8 +1,8 @@
 <?php
 
-namespace Laracore\Core\App\Actions;
+namespace Lvcmf\Core\App\Actions;
 
-use Laracore\Core\App\Tasks\AuthTask;
+use Lvcmf\Core\App\Tasks\AuthTask;
 
 class AuthAction
 {

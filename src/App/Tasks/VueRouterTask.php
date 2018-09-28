@@ -1,8 +1,8 @@
 <?php
 
-namespace Laracore\Core\App\Tasks;
+namespace Lvcmf\Core\App\Tasks;
 
-use Laracore\Core\Framework\Contracts\Frontend\VueRouter;
+use Lvcmf\Core\Framework\Contracts\Frontend\VueRouter;
 
 class VueRouterTask
 {

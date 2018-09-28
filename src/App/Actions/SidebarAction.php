@@ -1,9 +1,9 @@
 <?php
 
-namespace Laracore\Core\App\Actions;
+namespace Lvcmf\Core\App\Actions;
 
 use Cache;
-use Laracore\Core\App\Tasks\SidebarTask;
+use Lvcmf\Core\App\Tasks\SidebarTask;
 
 class SidebarAction
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Laracore\Core\Framework\Commands;
+namespace Lvcmf\Core\Framework\Commands;
 
 use DB;
 use Artisan;

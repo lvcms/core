@@ -1,9 +1,9 @@
 <?php
 
-namespace Laracore\Core\App\Console;
+namespace Lvcmf\Core\App\Console;
 
 use Illuminate\Console\Command;
-use Laracore\Core\Framework\Commands\Install;
+use Lvcmf\Core\Framework\Commands\Install;
 
 class InstallCommand extends Command
 {
@@ -18,7 +18,7 @@ class InstallCommand extends Command
      * @var string
      * @translator laravelacademy.org
      */
-    protected $signature = 'laracore:core:install';
+    protected $signature = 'lvcmf:core:install';
 
     /**
      * The console command description.
@@ -42,6 +42,6 @@ class InstallCommand extends Command
     {
         $this->info($this->install->migrate());
         $this->info($this->install->publish('core:config'));
-        $this->info($this->install->seed(\Laracore\Core\Databases\seeds\UploadTableSeeder::class));
+        $this->info($this->install->seed(\Lvcmf\Core\Databases\seeds\UploadTableSeeder::class));
     }
 }

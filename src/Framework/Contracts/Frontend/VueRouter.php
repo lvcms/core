@@ -1,6 +1,6 @@
 <?php
 
-namespace Laracore\Core\Framework\Contracts\Frontend;
+namespace Lvcmf\Core\Framework\Contracts\Frontend;
 
 interface VueRouter
 {

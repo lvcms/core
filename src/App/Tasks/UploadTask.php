@@ -1,10 +1,10 @@
 <?php
 
-namespace Laracore\Core\App\Tasks;
+namespace Lvcmf\Core\App\Tasks;
 
 use Storage;
 use Illuminate\Http\Request;
-use Laracore\Core\App\Models\Upload;
+use Lvcmf\Core\App\Models\Upload;
 
 class UploadTask
 {

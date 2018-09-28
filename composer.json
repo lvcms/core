@@ -1,12 +1,12 @@
 {
-    "name": "laracore/core",
+    "name": "lvcmf/core",
     "type": "library",
     "description": ":后台管理系统 core 使用自动构建html",
     "keywords": [
-        "laracore",
+        "lvcmf",
         "core"
     ],
-    "homepage": "https://github.com/laracore/core",
+    "homepage": "https://github.com/lvcmf/core",
     "license": "MIT",
     "authors": [
         {
@@ -28,12 +28,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Laracore\\Core\\": "src"
+            "Lvcmf\\Core\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Laracore\\Core\\": "tests"
+            "Lvcmf\\Core\\": "tests"
         }
     },
     "scripts": {
@@ -45,17 +45,17 @@
         "branch-alias": {
             "dev-master": "1.0-dev"
         },
-        "laracore": {
+        "lvcmf": {
             "name": "core",
-            "title": "laracore 核心系统",
-            "description": "核心系统 laracore 自动构建 JSON 数据",
+            "title": "lvcmf 核心系统",
+            "description": "核心系统 lvcmf 自动构建 JSON 数据",
             "author": "BigRocs",
             "version": "1.0.1",
             "providers": [
-                "Laracore\\Core\\CoreServiceProvider"
+                "Lvcmf\\Core\\CoreServiceProvider"
             ],
-            "install": "laracore:core:install",
-            "uninstall": "laracore:core:uninstall"
+            "install": "lvcmf:core:install",
+            "uninstall": "lvcmf:core:uninstall"
         }
     },
     "config": {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Laracore\Core\App\Models;
+namespace Lvcmf\Core\App\Models;
 
 use JWTAuth;
 use Tymon\JWTAuth\Contracts\JWTSubject;

@@ -1,9 +1,9 @@
 <?php
 
-namespace Laracore\Core\App\Actions;
+namespace Lvcmf\Core\App\Actions;
 
-use Laracore\Core\App\Tasks\UploadTask;
-use Laracore\Core\App\Tasks\ValidatorUploadTask;
+use Lvcmf\Core\App\Tasks\UploadTask;
+use Lvcmf\Core\App\Tasks\ValidatorUploadTask;
 
 class UploadAction
 {

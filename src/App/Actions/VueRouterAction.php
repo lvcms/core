@@ -1,9 +1,9 @@
 <?php
 
-namespace Laracore\Core\App\Actions;
+namespace Lvcmf\Core\App\Actions;
 
 use Cache;
-use Laracore\Core\App\Tasks\VueRouterTask;
+use Lvcmf\Core\App\Tasks\VueRouterTask;
 
 class VueRouterAction
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Laracore\Core\App\Models;
+namespace Lvcmf\Core\App\Models;
 
 use Storage;
 use Illuminate\Database\Eloquent\Model;

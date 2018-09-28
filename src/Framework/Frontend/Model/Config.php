@@ -1,6 +1,6 @@
 <?php
 
-namespace Laracore\Core\Framework\Frontend\Model;
+namespace Lvcmf\Core\Framework\Frontend\Model;
 
 use Illuminate\Support\Facades\Input;
 

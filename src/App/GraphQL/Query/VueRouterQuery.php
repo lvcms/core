@@ -1,13 +1,13 @@
 <?php
 
-namespace Laracore\Core\App\GraphQL\Query;
+namespace Lvcmf\Core\App\GraphQL\Query;
 
 use Folklore\GraphQL\Support\Query;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 use GraphQL;
 
-use Laracore\Core\App\Actions\VueRouterAction;
+use Lvcmf\Core\App\Actions\VueRouterAction;
 
 class VueRouterQuery extends Query
 {

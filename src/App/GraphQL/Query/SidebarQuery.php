@@ -1,13 +1,13 @@
 <?php
 
-namespace Laracore\Core\App\GraphQL\Query;
+namespace Lvcmf\Core\App\GraphQL\Query;
 
 use JWTAuth;
 use GraphQL;
 use Folklore\GraphQL\Support\Query;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
-use Laracore\Core\App\Actions\SidebarAction;
+use Lvcmf\Core\App\Actions\SidebarAction;
 
 class SidebarQuery extends Query
 {

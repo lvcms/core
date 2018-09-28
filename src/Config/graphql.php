@@ -123,12 +123,12 @@ return [
     'schemas' => [
         'default' => [
             'query' => [
-                'vueRouter' => Laracore\Core\App\GraphQL\Query\VueRouterQuery::class,
-                'sidebar' => Laracore\Core\App\GraphQL\Query\SidebarQuery::class,
-                'model' => Laracore\Core\App\GraphQL\Query\ModelQuery::class,
+                'vueRouter' => Lvcmf\Core\App\GraphQL\Query\VueRouterQuery::class,
+                'sidebar' => Lvcmf\Core\App\GraphQL\Query\SidebarQuery::class,
+                'model' => Lvcmf\Core\App\GraphQL\Query\ModelQuery::class,
             ],
             'mutation' => [
-                'updateModel' =>  Laracore\Core\App\GraphQL\Mutation\UpdateModelMutation::class,
+                'updateModel' =>  Lvcmf\Core\App\GraphQL\Mutation\UpdateModelMutation::class,
             ]
         ]
     ],
@@ -182,11 +182,11 @@ return [
      * ]
      */
     'types' => [
-        'CommonScalar' =>  Laracore\Core\App\GraphQL\Scalars\Common::class,
-        'VueRouter' =>  Laracore\Core\App\GraphQL\Type\VueRouterType::class,
-        'Sidebar' =>  Laracore\Core\App\GraphQL\Type\SidebarType::class,
-        'Model' =>  Laracore\Core\App\GraphQL\Type\ModelType::class,
-        'UpdateModel' =>  Laracore\Core\App\GraphQL\Type\UpdateModelType::class,
+        'CommonScalar' =>  Lvcmf\Core\App\GraphQL\Scalars\Common::class,
+        'VueRouter' =>  Lvcmf\Core\App\GraphQL\Type\VueRouterType::class,
+        'Sidebar' =>  Lvcmf\Core\App\GraphQL\Type\SidebarType::class,
+        'Model' =>  Lvcmf\Core\App\GraphQL\Type\ModelType::class,
+        'UpdateModel' =>  Lvcmf\Core\App\GraphQL\Type\UpdateModelType::class,
     ],
 
     /*

@@ -1,10 +1,10 @@
 <?php
 
-namespace Laracore\Core\Framework\Commands;
+namespace Lvcmf\Core\Framework\Commands;
 
 use Artisan;
 use Illuminate\Filesystem\Filesystem;
-use Laracore\Core\Framework\Database\Seeds\DatabaseSeeder;
+use Lvcmf\Core\Framework\Database\Seeds\DatabaseSeeder;
 
 class Install
 {
@@ -52,11 +52,11 @@ class Install
     }
     public function installModule($module)
     {
-        Artisan::call('laracore:'.$module.':install');
+        Artisan::call('lvcmf:'.$module.':install');
     }
     public function uninstallModule($module)
     {
-        Artisan::call('laracore:'.$module.':uninstall');
+        Artisan::call('lvcmf:'.$module.':uninstall');
     }
     /**
      * Get a command from console instance.

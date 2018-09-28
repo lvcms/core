@@ -1,14 +1,14 @@
 <?php
 
-namespace Laracore\Core\Framework\Frontend;
+namespace Lvcmf\Core\Framework\Frontend;
 
 use JWTAuth;
 use Exception;
 use Illuminate\Support\Facades\Input;
 
-use Laracore\Core\Framework\Frontend\Model\Config;
-use Laracore\Core\Framework\Frontend\Model\Item;
-use Laracore\Core\Framework\Contracts\Frontend\Model as ModelContract;
+use Lvcmf\Core\Framework\Frontend\Model\Config;
+use Lvcmf\Core\Framework\Frontend\Model\Item;
+use Lvcmf\Core\Framework\Contracts\Frontend\Model as ModelContract;
 class Model implements ModelContract
 {
     public $package;

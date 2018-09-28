@@ -1,9 +1,9 @@
 <?php
 
-namespace Laracore\Core\Framework\Frontend;
+namespace Lvcmf\Core\Framework\Frontend;
 
 use Illuminate\Support\Facades\Input;
-use Laracore\Core\Framework\Contracts\Frontend\VueRouter as VueRouterContract;
+use Lvcmf\Core\Framework\Contracts\Frontend\VueRouter as VueRouterContract;
 
 class VueRouter implements VueRouterContract
 {
