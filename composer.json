@@ -1,7 +1,7 @@
 {
     "name": "lvcmf/core",
     "type": "library",
-    "description": ":后台管理系统 core 使用自动构建html",
+    "description": ":后台管理系统 core 使用自动构建 html",
     "keywords": [
         "lvcmf",
         "core"
