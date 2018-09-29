@@ -2,6 +2,7 @@
 
 namespace Lvcmf\Core\App\Console;
 
+use Artisan;
 use Illuminate\Console\Command;
 use Lvcmf\Core\Framework\Commands\Install;
 
@@ -40,7 +41,8 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        $this->info($this->install->migrate());
+        $this->info($this->install->call('storage:link'));//创建 storage 软连接
+        $this->info($this->install->call('migrate'));
         $this->info($this->install->publish('core:config'));
         $this->info($this->install->seed(\Lvcmf\Core\Databases\seeds\UploadTableSeeder::class));
     }

@@ -18,10 +18,10 @@ class Install
         exec('composer dump-autoload');
         return 'dumpAutoload';
     }
-    public function migrate()
+    public function call($command)
     {
-        Artisan::call('migrate');
-        return 'migrate';
+        Artisan::call($command);
+        return $command;
     }
     public function publish($value)
     {
