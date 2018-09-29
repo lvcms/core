@@ -34,6 +34,7 @@ class ServiceProvider extends LaravelServiceProvider
         // 发布配置文件
         $this->publishes([
             __DIR__.'/Config/core.php' => config_path('core.php'),
+            __DIR__.'/Config/graphql.php' => config_path('graphql.php'),
         ], 'core:config');
         //发布视图
         $this->publishes([
