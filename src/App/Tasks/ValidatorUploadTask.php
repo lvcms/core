@@ -1,6 +1,6 @@
 <?php
 
-namespace Lvcmf\Core\App\Tasks;
+namespace Lvcms\Core\App\Tasks;
 
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;

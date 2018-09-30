@@ -1,8 +1,8 @@
 <?php
 
-namespace Lvcmf\Core\App\Tasks;
+namespace Lvcms\Core\App\Tasks;
 
-use Lvcmf\Core\Framework\Contracts\Frontend\Model;
+use Lvcms\Core\Framework\Contracts\Frontend\Model;
 
 class ModelItemTask
 {

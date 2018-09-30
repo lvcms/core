@@ -1,9 +1,9 @@
 <?php
 
-namespace Lvcmf\Core\Framework\Frontend;
+namespace Lvcms\Core\Framework\Frontend;
 
 use Illuminate\Support\Facades\Input;
-use Lvcmf\Core\Framework\Contracts\Frontend\VueRouter as VueRouterContract;
+use Lvcms\Core\Framework\Contracts\Frontend\VueRouter as VueRouterContract;
 
 class VueRouter implements VueRouterContract
 {

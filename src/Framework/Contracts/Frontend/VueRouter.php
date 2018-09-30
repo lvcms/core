@@ -1,6 +1,6 @@
 <?php
 
-namespace Lvcmf\Core\Framework\Contracts\Frontend;
+namespace Lvcms\Core\Framework\Contracts\Frontend;
 
 interface VueRouter
 {

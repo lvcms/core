@@ -1,8 +1,8 @@
 <?php
 
-namespace Lvcmf\Core\App\Actions;
+namespace Lvcms\Core\App\Actions;
 
-use Lvcmf\Core\App\Tasks\UpdateModelTask;
+use Lvcms\Core\App\Tasks\UpdateModelTask;
 class UpdateModelAction
 {
     public function handler()

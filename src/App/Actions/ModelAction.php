@@ -1,12 +1,12 @@
 <?php
 
-namespace Lvcmf\Core\App\Actions;
+namespace Lvcms\Core\App\Actions;
 
 use Cache;
 use Illuminate\Support\Facades\Input;
-use Lvcmf\Core\App\Tasks\ModelItemTask;
-use Lvcmf\Core\App\Tasks\ModelLayoutTask;
-use Lvcmf\Core\App\Tasks\ModelValueTask;
+use Lvcms\Core\App\Tasks\ModelItemTask;
+use Lvcms\Core\App\Tasks\ModelLayoutTask;
+use Lvcms\Core\App\Tasks\ModelValueTask;
 
 class ModelAction
 {

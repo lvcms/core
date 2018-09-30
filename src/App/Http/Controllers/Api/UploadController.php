@@ -1,9 +1,9 @@
 <?php
 
-namespace Lvcmf\Core\App\Http\Controllers\Api;
+namespace Lvcms\Core\App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Lvcmf\Core\App\Actions\UploadAction;
+use Lvcms\Core\App\Actions\UploadAction;
 
 class UploadController extends Controller
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Lvcmf\Core\App\Actions;
+namespace Lvcms\Core\App\Actions;
 
-use Lvcmf\Core\App\Tasks\AuthTask;
+use Lvcms\Core\App\Tasks\AuthTask;
 
 class AuthAction
 {

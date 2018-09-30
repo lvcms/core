@@ -1,9 +1,9 @@
 <?php
 
-namespace Lvcmf\Core\App\Actions;
+namespace Lvcms\Core\App\Actions;
 
-use Lvcmf\Core\App\Tasks\UploadTask;
-use Lvcmf\Core\App\Tasks\ValidatorUploadTask;
+use Lvcms\Core\App\Tasks\UploadTask;
+use Lvcms\Core\App\Tasks\ValidatorUploadTask;
 
 class UploadAction
 {

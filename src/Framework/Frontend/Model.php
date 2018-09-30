@@ -1,14 +1,14 @@
 <?php
 
-namespace Lvcmf\Core\Framework\Frontend;
+namespace Lvcms\Core\Framework\Frontend;
 
 use JWTAuth;
 use Exception;
 use Illuminate\Support\Facades\Input;
 
-use Lvcmf\Core\Framework\Frontend\Model\Config;
-use Lvcmf\Core\Framework\Frontend\Model\Item;
-use Lvcmf\Core\Framework\Contracts\Frontend\Model as ModelContract;
+use Lvcms\Core\Framework\Frontend\Model\Config;
+use Lvcms\Core\Framework\Frontend\Model\Item;
+use Lvcms\Core\Framework\Contracts\Frontend\Model as ModelContract;
 class Model implements ModelContract
 {
     public $package;

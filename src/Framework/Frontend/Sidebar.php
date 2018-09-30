@@ -1,9 +1,9 @@
 <?php
 
-namespace Lvcmf\Core\Framework\Frontend;
+namespace Lvcms\Core\Framework\Frontend;
 
 use Illuminate\Support\Facades\Input;
-use Lvcmf\Core\Framework\Contracts\Frontend\Sidebar as SidebarContract;
+use Lvcms\Core\Framework\Contracts\Frontend\Sidebar as SidebarContract;
 
 class Sidebar implements SidebarContract
 {

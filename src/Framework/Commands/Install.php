@@ -1,10 +1,10 @@
 <?php
 
-namespace Lvcmf\Core\Framework\Commands;
+namespace Lvcms\Core\Framework\Commands;
 
 use Artisan;
 use Illuminate\Filesystem\Filesystem;
-use Lvcmf\Core\Framework\Database\Seeds\DatabaseSeeder;
+use Lvcms\Core\Framework\Database\Seeds\DatabaseSeeder;
 
 class Install
 {
@@ -52,11 +52,11 @@ class Install
     }
     public function installModule($module)
     {
-        Artisan::call('lvcmf:'.$module.':install');
+        Artisan::call('lvcms:'.$module.':install');
     }
     public function uninstallModule($module)
     {
-        Artisan::call('lvcmf:'.$module.':uninstall');
+        Artisan::call('lvcms:'.$module.':uninstall');
     }
     /**
      * Get a command from console instance.

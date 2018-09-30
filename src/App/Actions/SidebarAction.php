@@ -1,9 +1,9 @@
 <?php
 
-namespace Lvcmf\Core\App\Actions;
+namespace Lvcms\Core\App\Actions;
 
 use Cache;
-use Lvcmf\Core\App\Tasks\SidebarTask;
+use Lvcms\Core\App\Tasks\SidebarTask;
 
 class SidebarAction
 {

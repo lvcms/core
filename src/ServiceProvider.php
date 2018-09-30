@@ -1,14 +1,14 @@
 <?php
 
-namespace Lvcmf\Core;
+namespace Lvcms\Core;
 
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
-use Lvcmf\Core\Framework\Contracts\Frontend\VueRouter as VueRouterContract;
-use Lvcmf\Core\Framework\Frontend\VueRouter;
-use Lvcmf\Core\Framework\Contracts\Frontend\Sidebar as SidebarContract;
-use Lvcmf\Core\Framework\Frontend\Sidebar;
-use Lvcmf\Core\Framework\Contracts\Frontend\Model as ModelContract;
-use Lvcmf\Core\Framework\Frontend\Model;
+use Lvcms\Core\Framework\Contracts\Frontend\VueRouter as VueRouterContract;
+use Lvcms\Core\Framework\Frontend\VueRouter;
+use Lvcms\Core\Framework\Contracts\Frontend\Sidebar as SidebarContract;
+use Lvcms\Core\Framework\Frontend\Sidebar;
+use Lvcms\Core\Framework\Contracts\Frontend\Model as ModelContract;
+use Lvcms\Core\Framework\Frontend\Model;
 
 class ServiceProvider extends LaravelServiceProvider
 {
@@ -21,8 +21,8 @@ class ServiceProvider extends LaravelServiceProvider
     {
         //加载artisan commands
         $this->commands([
-            \Lvcmf\Core\App\Console\InstallCommand::class,
-            \Lvcmf\Core\App\Console\UninstallCommand::class,
+            \Lvcms\Core\App\Console\InstallCommand::class,
+            \Lvcms\Core\App\Console\UninstallCommand::class,
         ]);
         //迁移文件配置
         $this->loadMigrationsFrom(__DIR__.'/Databases/migrations');

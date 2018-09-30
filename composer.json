@@ -1,12 +1,12 @@
 {
-    "name": "lvcmf/core",
+    "name": "lvcms/core",
     "type": "library",
     "description": ":后台管理系统 core 使用自动构建 html",
     "keywords": [
-        "lvcmf",
+        "lvcms",
         "core"
     ],
-    "homepage": "https://github.com/lvcmf/core",
+    "homepage": "https://github.com/lvcms/core",
     "license": "MIT",
     "authors": [
         {
@@ -20,7 +20,7 @@
         "laravel/framework": "~5.7",
         "folklore/graphql": "^1.0",
         "tymon/jwt-auth": "~1.0",
-        "lvcmf/admin": "~1.0"
+        "lvcms/admin": "~1.0"
     },
     "require-dev": {
         "phpunit/phpunit" : ">=5.4.3",
@@ -28,12 +28,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Lvcmf\\Core\\": "src"
+            "Lvcms\\Core\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Lvcmf\\Core\\": "tests"
+            "Lvcms\\Core\\": "tests"
         }
     },
     "scripts": {
@@ -47,20 +47,20 @@
         },
         "laravel": {
             "providers": [
-                "Lvcmf\\Core\\ServiceProvider"
+                "Lvcms\\Core\\ServiceProvider"
             ]
         },
-        "lvcmf": {
+        "lvcms": {
             "name": "core",
-            "title": "lvcmf 核心系统",
-            "description": "核心系统 lvcmf 自动构建 JSON 数据",
+            "title": "lvcms 核心系统",
+            "description": "核心系统 lvcms 自动构建 JSON 数据",
             "author": "BigRocs",
             "version": "1.0.1",
             "providers": [
-                "Lvcmf\\Core\\ServiceProvider"
+                "Lvcms\\Core\\ServiceProvider"
             ],
-            "install": "lvcmf:core:install",
-            "uninstall": "lvcmf:core:uninstall"
+            "install": "lvcms:core:install",
+            "uninstall": "lvcms:core:uninstall"
         }
     },
     "config": {

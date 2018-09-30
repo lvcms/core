@@ -1,6 +1,6 @@
 <?php
 
-namespace Lvcmf\Core\App\GraphQL\Scalars;
+namespace Lvcms\Core\App\GraphQL\Scalars;
 
 use Folklore\GraphQL\Support\Contracts\TypeConvertible;
 use GraphQL\Type\Definition\ScalarType;

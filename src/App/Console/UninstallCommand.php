@@ -1,9 +1,9 @@
 <?php
 
-namespace Lvcmf\Core\App\Console;
+namespace Lvcms\Core\App\Console;
 
 use Illuminate\Console\Command;
-use Lvcmf\Core\Framework\Commands\Uninstall;
+use Lvcms\Core\Framework\Commands\Uninstall;
 
 class UninstallCommand extends Command
 {
@@ -14,7 +14,7 @@ class UninstallCommand extends Command
      * @var string
      * @translator laravelacademy.org
      */
-    protected $signature = 'lvcmf:core:uninstall';
+    protected $signature = 'lvcms:core:uninstall';
 
     /**
      * The console command description.

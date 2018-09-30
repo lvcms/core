@@ -1,10 +1,10 @@
 <?php
 
-namespace Lvcmf\Core\Framework\Frontend\Model;
+namespace Lvcms\Core\Framework\Frontend\Model;
 
 use Illuminate\Support\Facades\Input;
-use Lvcmf\Core\App\Models\Upload;
-use Lvcmf\Core\Framework\Frontend\Model\Config;
+use Lvcms\Core\App\Models\Upload;
+use Lvcms\Core\Framework\Frontend\Model\Config;
 
 class Item
 {

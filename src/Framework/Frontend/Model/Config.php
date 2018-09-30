@@ -1,6 +1,6 @@
 <?php
 
-namespace Lvcmf\Core\Framework\Frontend\Model;
+namespace Lvcms\Core\Framework\Frontend\Model;
 
 use Illuminate\Support\Facades\Input;
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace Lvcmf\Core\App\Tasks;
+namespace Lvcms\Core\App\Tasks;
 
 use Storage;
 use Illuminate\Http\Request;
-use Lvcmf\Core\App\Models\Upload;
+use Lvcms\Core\App\Models\Upload;
 
 class UploadTask
 {

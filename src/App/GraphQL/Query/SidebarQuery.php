@@ -1,13 +1,13 @@
 <?php
 
-namespace Lvcmf\Core\App\GraphQL\Query;
+namespace Lvcms\Core\App\GraphQL\Query;
 
 use JWTAuth;
 use GraphQL;
 use Folklore\GraphQL\Support\Query;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
-use Lvcmf\Core\App\Actions\SidebarAction;
+use Lvcms\Core\App\Actions\SidebarAction;
 
 class SidebarQuery extends Query
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Lvcmf\Core\Framework\Commands;
+namespace Lvcms\Core\Framework\Commands;
 
 use DB;
 use Artisan;

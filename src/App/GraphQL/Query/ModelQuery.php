@@ -1,14 +1,14 @@
 <?php
 
-namespace Lvcmf\Core\App\GraphQL\Query;
+namespace Lvcms\Core\App\GraphQL\Query;
 
 use Folklore\GraphQL\Support\Query;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 use GraphQL;
 
-use Lvcmf\Core\App\Actions\ModelAction;
-use Lvcmf\Core\App\Actions\AuthAction;
+use Lvcms\Core\App\Actions\ModelAction;
+use Lvcms\Core\App\Actions\AuthAction;
 class ModelQuery extends Query
 {
     protected $attributes = [

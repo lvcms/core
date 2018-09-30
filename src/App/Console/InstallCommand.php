@@ -1,10 +1,10 @@
 <?php
 
-namespace Lvcmf\Core\App\Console;
+namespace Lvcms\Core\App\Console;
 
 use Artisan;
 use Illuminate\Console\Command;
-use Lvcmf\Core\Framework\Commands\Install;
+use Lvcms\Core\Framework\Commands\Install;
 
 class InstallCommand extends Command
 {
@@ -19,7 +19,7 @@ class InstallCommand extends Command
      * @var string
      * @translator laravelacademy.org
      */
-    protected $signature = 'lvcmf:core:install';
+    protected $signature = 'lvcms:core:install';
 
     /**
      * The console command description.
@@ -45,7 +45,7 @@ class InstallCommand extends Command
         $this->info($this->install->call('storage:link'));//创建 storage 软连接
         $this->info($this->install->call('migrate'));
         $this->info($this->install->publish('core:config'));
-        $this->info($this->install->seed(\Lvcmf\Core\Databases\seeds\UploadTableSeeder::class));
+        $this->info($this->install->seed(\Lvcms\Core\Databases\seeds\UploadTableSeeder::class));
     }
     /**
      * 创建 Vendor 目录
