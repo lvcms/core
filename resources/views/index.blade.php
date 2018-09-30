@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="{{ config('website.icon') }}">
-    <link href={{ asset('/vendor/'.$package.'/css/app.min.css') }} rel=stylesheet>
+    <link href={{ asset('/vendor/'.$package.'/css/app.css') }} rel=stylesheet>
     <!-- 渲染插件Css -->
 @if (!empty($resources['css']))
   @foreach ($resources['css'] as $css)
@@ -41,6 +41,6 @@
   @endforeach
 @endif
   <!-- 渲染插件Js End -->
-    <script type=text/javascript src={{ asset('/vendor/'.$package.'/js/app.min.js') }}></script>
+    <script type=text/javascript src={{ asset('/vendor/'.$package.'/js/app.js') }}></script>
 </body>
 </html>

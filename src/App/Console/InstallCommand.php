@@ -41,9 +41,22 @@ class InstallCommand extends Command
      */
     public function handle()
     {
+        $this->mkdirVendor();
         $this->info($this->install->call('storage:link'));//创建 storage 软连接
         $this->info($this->install->call('migrate'));
         $this->info($this->install->publish('core:config'));
         $this->info($this->install->seed(\Lvcmf\Core\Databases\seeds\UploadTableSeeder::class));
+    }
+    /**
+     * 创建 Vendor 目录
+     */
+    public function mkdirVendor()
+    {
+        if (file_exists(public_path('vendor'))) {
+            return $this->info('The "public/vendor" directory already exists.');
+        } else {
+            $this->laravel->make('files')->makeDirectory(public_path('vendor'), 0777, true);
+            $this->info('The [public/vendor] directory has been create.');
+        }
     }
 }
