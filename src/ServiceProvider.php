@@ -3,6 +3,8 @@
 namespace Lvcms\Core;
 
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
+use Illuminate\Contracts\Http\Kernel;
+use Lvcms\Core\App\Http\Middleware\Cors;
 use Lvcms\Core\Framework\Contracts\Frontend\VueRouter as VueRouterContract;
 use Lvcms\Core\Framework\Frontend\VueRouter;
 use Lvcms\Core\Framework\Contracts\Frontend\Sidebar as SidebarContract;
@@ -49,6 +51,8 @@ class ServiceProvider extends LaravelServiceProvider
      */
     public function register()
     {
+        // 注册中间件
+        app()->make(Kernel::class)->prependMiddleware(Cors::class);
         $this->initConfig();
         $this->bind();
     }
@@ -67,12 +71,8 @@ class ServiceProvider extends LaravelServiceProvider
      */
     public function bind()
     {
-        $this->app->bind(VueRouterContract::class, function () {
-            return new VueRouter();
-        });
-        $this->app->bind(SidebarContract::class, function () {
-            return new Sidebar();
-        });
+        $this->app->bind(VueRouterContract::class, VueRouter::class);
+        $this->app->bind(SidebarContract::class, Sidebar::class);
         $this->app->bind(ModelContract::class, Model::class);
     }
 }
