@@ -42,7 +42,10 @@ class InstallCommand extends Command
     public function handle()
     {
         $this->mkdirVendor();
+
         $this->info($this->install->call('storage:link'));//创建 storage 软连接
+        $this->info($this->install->call('jwt:secret')); // 创建 jwt:secret
+
         $this->info($this->install->call('migrate'));
         $this->info($this->install->publish('core:config'));
         $this->info($this->install->seed(\Lvcms\Core\Databases\seeds\UploadTableSeeder::class));
