@@ -65,6 +65,9 @@ class ServiceProvider extends LaravelServiceProvider
     {
         //设置 user 模型位置
         config(['auth.providers.users.model' => App\Models\User::class]);
+        //更改默认上传驱动为public
+        config(['filesystems.default' => 'public']);
+
     }
     /**
      * [bind 绑定实例]
