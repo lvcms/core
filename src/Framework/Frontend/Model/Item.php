@@ -108,7 +108,7 @@ class Item
      */
     public function getKeyValue($key,$item)
     {
-        if ($query = $this->model->where($this->keyAlias, '=', $key)->first()) 
+        if ($query = $this->model->where($this->keyAlias, '=', $key)->first())
         {
             return $this->componentJsonTypeChange(
                 $item['component'],
@@ -143,10 +143,14 @@ class Item
                 return (Boolean)$value;
                 break;
             case 'upload':
-                return [
-                    'id' => (Float)$value,
-                    'url' => $this->uploadModel->where('id', $value)->first()->url
-                ];
+                try{
+                    return [
+                        'id' => (Float) $value,
+                        'url' => $this->uploadModel->where('id', $value)->first()->url,
+                    ];
+                }catch(\Exception $e){
+                    return $e;
+                }
                 break;
             case 'table':
                 return json_decode($value);
