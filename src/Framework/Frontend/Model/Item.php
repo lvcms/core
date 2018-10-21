@@ -171,12 +171,43 @@ class Item
             // 自定义方法处理
             return $this->model->{$this->handlerFormRequest}($value);
         } else {
-            if (empty($values->id)) {
+            if (empty($value->id)) {
                 return $this->updateKeyValue($value);
             } else {
-                return '';
+                return array_key_exists('handler',$value)?$this->modelHandler():$this->updateIdValue($value);
             }
         }
+    }
+    /**
+     * [modelHandler 处理 Id 类模型操作]
+     * 比如 添加 删除
+     * @param  [type] $values [description]
+     * @return [type]         [description]
+     */
+    public function modelHandler()
+    {
+
+    }
+    /**
+     * [updateIdValue 更新 Id 数据]
+     * @param  [type] $values [description]
+     * @return [type]         [description]
+     */
+    public function updateIdValue($value)
+    {
+        try {
+            $request = $this->model->where('id', $value->id)->update((array)$value);
+            if($request){
+                return [
+                    'status' => 200,
+                    'message' => '数据更新成功',
+                    'value' => $value,
+                ];
+            }
+        } catch (Exception $e) {
+            abort(501, '数据更新失败!请联系开发者.');
+        }
+
     }
     /**
      * [updateKeyValue 更新 key 数据]
