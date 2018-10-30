@@ -13,6 +13,7 @@ class Upload extends Model
     public $table = 'core_uploads';
 
     protected $appends = ['url'];
+
     /**
      * [getUrlAttribute 根据驱动 通过path获取图片url]
      * @return [type] [description]

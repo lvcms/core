@@ -174,7 +174,7 @@ class Item
             if (empty($value->id)) {
                 return $this->updateKeyValue($value);
             } else {
-                return array_key_exists('handler',$value)?$this->modelHandler():$this->updateIdValue($value);
+                return array_key_exists('handler',$value)?$this->modelHandler($value):$this->updateIdValue($value);
             }
         }
     }
@@ -184,9 +184,33 @@ class Item
      * @param  [type] $values [description]
      * @return [type]         [description]
      */
-    public function modelHandler()
+    public function modelHandler($params)
     {
-
+        switch ($params->handler) {
+            case 'delete':
+                $request = $this->model->where('id', $params->id)->delete();
+                if ($request) {
+                    return [
+                        'status' => 200,
+                        'message' => '数据删除成功',
+                        'value' => $params,
+                    ];
+                }
+                break;
+            case 'replicate':
+                $request = $this->model->where('id', $params->id)->first()->replicate()->save();
+                if ($request) {
+                    return [
+                        'status' => 200,
+                        'message' => '创建数据副本成功',
+                        'value' => $params,
+                    ];
+                }
+                break;
+            default:
+                # code...
+                break;
+        }
     }
     /**
      * [updateIdValue 更新 Id 数据]
