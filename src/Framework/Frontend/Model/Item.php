@@ -195,7 +195,7 @@ class Item
                         'message' => '数据删除成功',
                         'value' => [
                             'handler' => 'delete',
-                            'params' => $params
+                            'params' => [$params]
                         ],
                     ];
                 }
@@ -208,7 +208,7 @@ class Item
                         'message' => '创建数据副本成功',
                         'value' => [
                             'handler' => 'add',
-                            'params' => $model
+                            'params' => [$model]
                         ],
                     ];
                 }
