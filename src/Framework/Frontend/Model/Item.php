@@ -174,7 +174,7 @@ class Item
             if (empty($value->id)) {
                 return $this->updateKeyValue($value);
             } else {
-                return array_key_exists('handler',$value)?$this->modelHandler($value):$this->updateIdValue($value);
+                return $this->modelHandler($value);
             }
         }
     }
@@ -186,61 +186,55 @@ class Item
      */
     public function modelHandler($params)
     {
-        switch ($params->handler) {
-            case 'delete':
-                $request = $this->model->where('id', $params->id)->delete();
-                if ($request) {
-                    return [
-                        'status' => 200,
-                        'message' => '数据删除成功',
-                        'value' => [
-                            'handler' => 'delete',
-                            'params' => [$params]
-                        ],
-                    ];
-                }
-                break;
-            case 'replicate':
-                $model = $this->model->where('id', $params->id)->first()->replicate();
-                if ($model->save()) {
-                    return [
-                        'status' => 200,
-                        'message' => '创建数据副本成功',
-                        'value' => [
-                            'handler' => 'add',
-                            'params' => [$model]
-                        ],
-                    ];
-                }
-                break;
-            default:
-                # code...
-                break;
-        }
-    }
-    /**
-     * [updateIdValue 更新 Id 数据]
-     * @param  [type] $values [description]
-     * @return [type]         [description]
-     */
-    public function updateIdValue($value)
-    {
         try {
-            $model = $this->model->where('id', $value->id);
-            if($model->update((array)$value)){
-                return [
-                    'status' => 200,
-                    'message' => '数据更新成功',
-                    'value' => [
-                        'handler' => 'update',
-                        'params' => $model->get()
-                    ],
-                ];
+            if (!array_key_exists('handler', $params)) {
+                $params->handler = 'default';
+            }
+            switch ($params->handler) {
+                case 'delete':
+                    $request = $this->model->where('id', $params->id)->delete();
+                    if ($request) {
+                        return [
+                            'status' => 200,
+                            'message' => '数据删除成功',
+                            'value' => [
+                                'handler' => 'delete',
+                                'params' => [$params]
+                            ],
+                        ];
+                    }
+                    break;
+                case 'replicate':
+                    $model = $this->model->where('id', $params->id)->first()->replicate();
+                    if ($model->save()) {
+                        return [
+                            'status' => 200,
+                            'message' => '创建数据副本成功',
+                            'value' => [
+                                'handler' => 'add',
+                                'params' => [$model]
+                            ],
+                        ];
+                    }
+                    break;
+                default:
+                    unset($params->handler);
+                    $model = $this->model->where('id', $params->id);
+                    if ($model->update((array) $params)) {
+                        return [
+                            'status' => 200,
+                            'message' => '数据更新成功',
+                            'value' => [
+                                'handler' => 'update',
+                                'params' => $model->get(),
+                            ],
+                        ];
+                    }
+                    break;
             }
         } catch (\Exception $e) {
             abort(501, '数据更新失败!请联系开发者.');
         }
-
     }
     /**
      * [updateKeyValue 更新 key 数据]
