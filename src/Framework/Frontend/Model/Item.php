@@ -193,17 +193,23 @@ class Item
                     return [
                         'status' => 200,
                         'message' => '数据删除成功',
-                        'value' => $params,
+                        'value' => [
+                            'handler' => 'delete',
+                            'params' => $params
+                        ],
                     ];
                 }
                 break;
             case 'replicate':
-                $request = $this->model->where('id', $params->id)->first()->replicate()->save();
-                if ($request) {
+                $model = $this->model->where('id', $params->id)->first()->replicate();
+                if ($model->save()) {
                     return [
                         'status' => 200,
                         'message' => '创建数据副本成功',
-                        'value' => $params,
+                        'value' => [
+                            'handler' => 'add',
+                            'params' => $model
+                        ],
                     ];
                 }
                 break;
@@ -220,15 +226,18 @@ class Item
     public function updateIdValue($value)
     {
         try {
-            $request = $this->model->where('id', $value->id)->update((array)$value);
-            if($request){
+            $model = $this->model->where('id', $value->id);
+            if($model->update((array)$value)){
                 return [
                     'status' => 200,
                     'message' => '数据更新成功',
-                    'value' => $value,
+                    'value' => [
+                        'handler' => 'update',
+                        'params' => $model->get()
+                    ],
                 ];
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             abort(501, '数据更新失败!请联系开发者.');
         }
 
