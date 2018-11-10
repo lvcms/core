@@ -272,7 +272,7 @@ class Item
                         return json_encode($value);
                         break;
                     case 'upload':
-                        return $value->id;
+                        return (is_array($value) && array_key_exists('id', $value))?$value->id:null;
                         break;
                     default:
                         return $value;
