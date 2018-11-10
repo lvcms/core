@@ -20,6 +20,10 @@ class ModelType extends BaseType
                 'type' => GraphQL::Type('CommonScalar'),
                 'description' => 'The layout of the Model'
             ],
+            'modal' => [
+                'type' => GraphQL::Type('CommonScalar'),
+                'description' => 'The modal of the Model'
+            ],
             'item' => [
                 'type' => GraphQL::Type('CommonScalar'),
                 'description' => 'The data of the item'

@@ -6,6 +6,7 @@ use Cache;
 use Illuminate\Support\Facades\Input;
 use Lvcms\Core\App\Tasks\ModelItemTask;
 use Lvcms\Core\App\Tasks\ModelLayoutTask;
+use Lvcms\Core\App\Tasks\ModelModalTask;
 use Lvcms\Core\App\Tasks\ModelValueTask;
 
 class ModelAction
@@ -17,11 +18,13 @@ class ModelAction
     protected $minutes = 120;
     public function handler()
     {
-        $item = app()->make(ModelItemTask::class)->handler();
         $layout  = app()->make(ModelLayoutTask::class)->handler();
+        $modal = app()->make(ModelModalTask::class)->handler();
+        $item = app()->make(ModelItemTask::class)->handler();
         $value = app()->make(ModelValueTask::class)->handler();
         return [
             "layout" => $layout,
+            "modal" => $modal,
             "item" => $item,
             "value" => $value
         ];
