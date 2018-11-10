@@ -14,8 +14,15 @@ interface Model
      * @return [type] [description]
      */
     public function layout();
+
     /**
-     * [item 获取模型 项目 layout 布局]
+     * [modal 获取模型 modal 弹出框布局]
+     * @return [type] [description]
+     */
+    public function modal();
+
+    /**
+     * [item 获取模型 项目 item 项目布局]
      */
     public function item();
     /**

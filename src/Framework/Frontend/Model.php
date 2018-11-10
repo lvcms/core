@@ -41,6 +41,11 @@ class Model implements ModelContract
         return $this->config->get('layout');
     }
 
+    public function modal()
+    {
+        return $this->config->get('modal');
+    }
+
     public function item()
     {
         return $this->config->get('item');
