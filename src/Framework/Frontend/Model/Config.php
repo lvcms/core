@@ -27,7 +27,7 @@ class Config
         $this->handlerItem();
 
     }
-    /** 
+    /**
      * 获取全部配置
      */
     public function all(){
@@ -67,7 +67,7 @@ class Config
      */
     private function renderComponent($component)
     {
-        
+
         // 增加默认允许获取 value 属性
         $component['isValue'] = array_key_exists('isValue',$component)? $component['isValue']: true;
         // 使用自定义 component model 获取数据额皮质 如果没有 使用 model 配置文件配置获取方式 如果无设置默认使用 id
@@ -86,7 +86,7 @@ class Config
         }
         return $component;
     }
-    /** 
+    /**
      * 增加 layout 默认配置
      * 自动加载 layout col 配置
      * 自动加载 layout row 配置
@@ -94,13 +94,15 @@ class Config
     private function layoutDefalutConfig($layouts)
     {
         foreach ($layouts as &$layout) {
-            //没有自定义配置时加载默认配置 仅支持 col row 设定其他 style 会报错
-           if (!array_key_exists('config', $layout)) {
-               $layout['config'] = config('core.layout.'.$layout['style']);
-           }
-           if (array_key_exists('content', $layout)) {
-                $layout['content'] = $this->layoutDefalutConfig($layout['content']);
-           }
+            if($layout['style'] == 'row' || $layout['style'] == 'col' ){
+                //没有自定义配置时加载默认配置 仅支持 col row 设定其他 style 会报错
+                if (!array_key_exists('config', $layout)) {
+                    $layout['config'] = config('core.layout.' . $layout['style']);
+                }
+                if (array_key_exists('content', $layout)) {
+                    $layout['content'] = $this->layoutDefalutConfig($layout['content']);
+                }
+            }
         }
         return $layouts;
     }
