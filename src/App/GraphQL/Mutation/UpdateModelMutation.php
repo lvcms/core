@@ -26,7 +26,8 @@ class UpdateModelMutation extends Mutation
         return [
             'package' => ['name' => 'package', 'type' => Type::nonNull(Type::string())],
             'model' => ['name' => 'model', 'type' => Type::nonNull(Type::string())],
-            'value' => ['name' => 'value', 'type' => Type::nonNull(Type::string())],
+            'item' => ['name' => 'item', 'type' => Type::nonNull(Type::string())],
+            'params' => ['name' => 'params', 'type' => Type::nonNull(Type::string())],
         ];
     }
 

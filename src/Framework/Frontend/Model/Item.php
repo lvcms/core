@@ -11,7 +11,7 @@ class Item
     public $package;
     public $modelName;
     public $itemName;
-    public $value;
+    public $params;
     public $keyAlias;
     public $valueAlias;
     public $handlerFormRequest; // 自定义处理 form 提交数据方法名称
@@ -34,7 +34,7 @@ class Item
         $this->package = Input::get('variables.package');
         $this->modelName = Input::get('variables.model');
         $this->itemName = Input::get('variables.item');
-        $this->value = json_decode(Input::get('variables.value'));
+        $this->params = json_decode(Input::get('variables.params'));
         $this->keyAlias = $this->config->has('key')? $this->config['keyValueAlias']['key']: 'key';
         $this->valueAlias = $this->config->has('value')? $this->config['keyValueAlias']['value']: 'value';
         $this->handlerFormRequest = $this->config->has('handlerFormRequest')?$this->config['handlerFormRequest']: null;
@@ -92,7 +92,7 @@ class Item
      */
     public function update()
     {
-        return $this->handlerFormRequest($this->value);
+        return $this->handlerFormRequest($this->params);
     }
     /**
      * [getIdValue 根据 id 获取 value]
