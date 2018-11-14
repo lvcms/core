@@ -27,7 +27,7 @@ class ModelQuery extends Query
             'package' => ['name' => 'package', 'type' => Type::nonNull(Type::string())],
             'model' => ['name' => 'model', 'type' => Type::nonNull(Type::string())],
             'item' => ['name' => 'item', 'type' => Type::string()],
-            'params' => ['name' => 'params', 'type' => Type::nonNull(Type::string())],
+            'params' => ['name' => 'params', 'type' => Type::string()],
         ];
     }
 
