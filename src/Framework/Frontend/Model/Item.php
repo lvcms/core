@@ -68,6 +68,9 @@ class Item
     public function value()
     {
         try{
+            if (property_exists($this->params, 'id')) {
+                $idValue = $this->getIdValue();
+            }
             foreach ($this->itmeLayout as $key => $item) {
                 if ($item['isValue']) {
                     switch ($item['modelType']) {
@@ -75,7 +78,7 @@ class Item
                             $value[$key] = $this->getKeyValue($key,$item);
                             break;
                         case 'id':
-                            $value[$key] = $this->getIdValue();
+                            $value[$key] = property_exists($this->params, 'id')? $idValue->$key: $this->getIdList();
                             break;
                     }
                 }
@@ -99,6 +102,14 @@ class Item
      * @return [type]              [description]
      */
     public function getIdValue()
+    {
+        return $this->model->where('id', $this->params->id)->first();
+
+    }
+    /**
+     *  [getIdList 根据 id 获取列表数据]
+     */
+    public function getIdList()
     {
         return $this->model->all();
     }
